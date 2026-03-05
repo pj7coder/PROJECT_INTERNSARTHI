@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Posts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #111827;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Search and Filter */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+    }
+    .filter-bar input, .filter-bar select {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    /* Job cards */
+    .job-card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-3px);
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .job-header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #0078d7;
+    }
+    .job-header span {
+      font-size: 0.9rem;
+      background: #e0f0ff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: #0056b3;
+    }
+    .job-desc {
+      margin: 10px 0;
+      color: #444;
+    }
+    .expand-details {
+      margin-top: 10px;
+      display: none;
+      padding: 12px;
+      background: #fafafa;
+      border-left: 4px solid #0078d7;
+      border-radius: 6px;
+    }
+    .expand-details p {
+      margin: 4px 0;
+    }
+    .job-card button {
+      background: #0078d7;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+    .job-card button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>💼 Job Openings</h1>
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <input type="text" id="searchJob" placeholder="Search by job title...">
+    <select id="filterLocation">
+      <option value="">All Locations</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Remote">Remote</option>
+    </select>
+  </div>
+
+  <!-- Jobs List -->
+  <div id="jobsContainer">
+
+    <div class="job-card">
+      <div class="job-header">
+        <h2>Frontend Developer</h2>
+        <span>Remote</span>
+      </div>
+      <p class="job-desc">We are looking for a skilled frontend developer with experience in React.js and responsive design.</p>
+      <button onclick="toggleDetails(this)">View Details</button>
+      <div class="expand-details">
+        <p><b>Requirements:</b> 2+ years of frontend development</p>
+        <p><b>Skills:</b> React.js, HTML, CSS, JavaScript</p>
+        <p><b>Salary:</b> ₹6-8 LPA</p>
+        <button onclick="alert('Applied Successfully!')">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <h2>UI/UX Designer</h2>
+        <span>Bangalore</span>
+      </div>
+      <p class="job-desc">Join our design team to create user-friendly interfaces and experiences.</p>
+      <button onclick="toggleDetails(this)">View Details</button>
+      <div class="expand-details">
+        <p><b>Requirements:</b> Portfolio in UI/UX projects</p>
+        <p><b>Skills:</b> Figma, Adobe XD, Prototyping</p>
+        <p><b>Salary:</b> ₹5-7 LPA</p>
+        <button onclick="alert('Applied Successfully!')">Apply Now</button>
+      </div>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <h2>Data Analyst</h2>
+        <span>Mumbai</span>
+      </div>
+      <p class="job-desc">Looking for a data analyst to work on data visualization and insights generation.</p>
+      <button onclick="toggleDetails(this)">View Details</button>
+      <div class="expand-details">
+        <p><b>Requirements:</b> Strong SQL & Excel knowledge</p>
+        <p><b>Skills:</b> PowerBI, Python, SQL</p>
+        <p><b>Salary:</b> ₹6-9 LPA</p>
+        <button onclick="alert('Applied Successfully!')">Apply Now</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleDetails(button) {
+      let details = button.nextElementSibling;
+      details.style.display = details.style.display === "block" ? "none" : "block";
+    }
+
+    // Search & Filter
+    const searchJob = document.getElementById("searchJob");
+    const filterLocation = document.getElementById("filterLocation");
+    const jobs = document.getElementById("jobsContainer").children;
+
+    function filterJobs() {
+      let searchText = searchJob.value.toLowerCase();
+      let location = filterLocation.value;
+
+      Array.from(jobs).forEach(job => {
+        let title = job.querySelector("h2").innerText.toLowerCase();
+        let loc = job.querySelector("span").innerText;
+
+        if ((title.includes(searchText)) && (location === "" || loc === location)) {
+          job.style.display = "block";
+        } else {
+          job.style.display = "none";
+        }
+      });
+    }
+
+    searchJob.addEventListener("keyup", filterJobs);
+    filterLocation.addEventListener("change", filterJobs);
+  </script>
+</body>
+</html>

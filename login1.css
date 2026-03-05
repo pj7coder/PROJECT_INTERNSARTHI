@@ -1,0 +1,332 @@
+/* Theme-aware styles — dark by default, light when html[data-theme="light"] is set */
+
+/* Dark-mode defaults (applied when no data-theme or a non-light theme is active) */
+:root{
+  --bg-1: #0f1724;               /* solid dark page background */
+  --bg-2: #0f1724;
+  --card-bg: #0b1224;            /* solid card background */
+  --muted: #cbd5e1;              /* text color on dark */
+  --muted-2: #9fb3c8;            /* secondary text on dark */
+  --accent-1: #7c5cff;
+  --accent-2: #4cc9f0;
+  --accent-grad: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  --radius: 16px;
+  --glass-blur: 0px;
+  --easing: cubic-bezier(.18,.9,.28,1);
+  --transition: 240ms var(--easing);
+  --shadow-soft: 0 6px 18px rgba(2,6,23,0.45);
+  --shadow-strong: 0 16px 48px rgba(2,6,23,0.5);
+  --card-tint: rgba(255,255,255,0.00);
+  --card-tint-strong: rgba(255,255,255,0.00);
+  --icon-bg: rgba(255,255,255,0.04);
+  --icon-color: #ffffff;
+  --card-surface: rgba(10,16,30,0.28);
+  --card-surface-hover: rgba(10,16,30,0.36);
+  --card-border: rgba(255,255,255,0.03);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Light theme overrides (applied when html[data-theme="light"]) */
+html[data-theme="light"]{
+  --bg-1: #fbfdff;
+  --bg-2: #eef6ff;
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.82));
+  --muted: #1b2430;
+  --muted-2: #455569;
+  --accent-1: #7c5cff;
+  --accent-2: #4cc9f0;
+  --accent-grad: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  --shadow-soft: 0 10px 30px rgba(17,24,39,0.06);
+  --shadow-strong: 0 22px 60px rgba(17,24,39,0.08);
+  --card-tint: rgba(10,20,30,0.035);
+  --icon-bg: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(246,249,255,0.94));
+  --icon-color: #0b1220;
+  --card-surface: rgba(255,255,255,0.78);
+  --card-surface-hover: rgba(255,255,255,0.92);
+  --card-border: rgba(16,24,40,0.06);
+}
+
+/* Reset & layout */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  color:var(--muted);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  isolation:isolate;
+  background: var(--bg-1); /* plain solid background for dark + light uses gradient via --bg-1 when set */
+  transition: background var(--transition), color var(--transition);
+}
+
+/* On light theme use a subtle gradient background */
+html[data-theme="light"] body{
+  background:
+    radial-gradient(600px 320px at 8% 18%, rgba(124,92,255,0.04), transparent 12%),
+    radial-gradient(700px 360px at 88% 82%, rgba(76,201,240,0.03), transparent 14%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+}
+
+/* Remove grain/noise in dark mode */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image: radial-gradient(transparent 0.7px, rgba(0,0,0,0.01) 0.7px);
+  background-size: 6px 6px;
+  opacity:0.02;
+  pointer-events:none;
+  transition: opacity var(--transition);
+}
+html:not([data-theme="light"]) body::before{ opacity:0 !important; pointer-events:none; }
+
+/* Layout */
+.page{ width:100%; max-width:1080px; }
+.hero{ display:flex; align-items:center; justify-content:center; min-height:72vh; padding:6px; }
+
+/* Card */
+.glass-card{
+  width:100%;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding:28px;
+  box-shadow: 0 8px 28px rgba(2,6,23,0.35);
+  border: 1px solid rgba(255,255,255,0.02);
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  position:relative;
+  overflow:visible;
+}
+
+/* Decorative sheen + rim only on light theme */
+.glass-card::before,
+.glass-card::after{
+  display:none;
+}
+html[data-theme="light"] .glass-card::before{
+  content:"";
+  position:absolute;
+  left:-10%;
+  top:-28%;
+  width:42%;
+  height:140%;
+  transform: rotate(-20deg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.55));
+  filter: blur(12px);
+  opacity:0.12;
+  pointer-events:none;
+  transition:opacity var(--transition);
+}
+html[data-theme="light"] .glass-card::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:inherit;
+  background:
+    radial-gradient(380px 140px at 10% 12%, rgba(124,92,255,0.03), transparent 6%),
+    radial-gradient(380px 140px at 90% 88%, rgba(76,201,240,0.02), transparent 6%);
+  mix-blend-mode: screen;
+  pointer-events:none;
+}
+
+/* Laser container + beams only for light theme */
+.laser-wrap{ position:absolute; inset:-6% -10%; pointer-events:none; z-index:0; display:none; }
+.laser, .laser.alt, .laser::after{ display:none; }
+html[data-theme="light"] .laser-wrap{ display:block; }
+html[data-theme="light"] .laser{ display:block; }
+
+/* laser beams (light theme) */
+html[data-theme="light"] .laser{
+  position:absolute;
+  left:-30%;
+  top:10%;
+  width:160%;
+  height:5px;
+  background: linear-gradient(90deg, rgba(124,92,255,0), rgba(124,92,255,0.45), rgba(124,92,255,0));
+  filter: blur(6px) saturate(120%);
+  transform: rotate(-4deg) translateX(-20%);
+  opacity:0.48;
+  mix-blend-mode: multiply;
+  animation: laserMove 8s linear infinite;
+  z-index:0;
+}
+html[data-theme="light"] .laser.alt{
+  top:72%;
+  height:3px;
+  background: linear-gradient(90deg, rgba(76,201,240,0), rgba(76,201,240,0.38), rgba(76,201,240,0));
+  filter: blur(5px) saturate(110%);
+  animation-duration: 11s;
+  opacity:0.32;
+  transform: rotate(3deg) translateX(-10%);
+  z-index:0;
+}
+html[data-theme="light"] .laser::after{
+  content:"";
+  position:absolute;
+  left:28%;
+  top:-4px;
+  width:10px; height:10px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.6) 40%, transparent 60%);
+  filter: blur(2px);
+  opacity:0.8;
+  transform: scale(.95);
+  animation: sparkle 3.2s ease-in-out infinite;
+}
+
+/* Headings */
+.glass-card h1{ margin:0 0 6px 0; font-size:22px; color: var(--muted); letter-spacing:-0.2px; font-weight:700; }
+.subtitle{ margin:0 0 18px 0; color:var(--muted-2); font-weight:500; }
+
+/* Role grid */
+.role-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;
+  margin:8px 0 18px;
+  align-items:start;
+}
+
+/* Role card */
+.role-card{
+  position:relative;
+  background: transparent; /* card color comes from .glass-card via var(--card-bg) to keep consistency */
+  border-radius:12px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  cursor:pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  border:1px solid rgba(255,255,255,0.03);
+  min-height:120px;
+  overflow:visible;
+  isolation:isolate;
+  z-index:1;
+  /* use semi-transparent surface so backdrop-filter can show through */
+  background-color: var(--card-surface);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--card-border);
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+/* inner soft depth only in light theme */
+.role-card::before{ display:none; }
+html[data-theme="light"] .role-card{
+  background: linear-gradient(180deg, rgba(10,20,30,0.03), rgba(10,20,30,0.015));
+  border:1px solid rgba(16,24,40,0.06);
+}
+html[data-theme="light"] .role-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow: inset 0 10px 24px rgba(10,14,20,0.03);
+  pointer-events:none;
+}
+
+/* Icon pill — color adapts to theme */
+.role-card .icon{
+  position:relative;
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background: var(--icon-bg);
+  color: var(--icon-color);
+  box-shadow: 0 8px 22px rgba(2,6,23,0.35);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+  z-index:2;
+}
+
+/* Title & desc */
+.role-card h3{ margin:0; font-size:15px; font-weight:700; color: var(--muted); }
+.role-card p{ margin:0; font-size:13px; color: var(--muted-2); }
+
+/* hover / focus interactions */
+.role-card:hover{
+  transform: translateY(-6px);
+  border-color: var(--accent-1);
+  box-shadow: var(--shadow-strong);
+}
+.role-card:hover .icon{
+  transform: translateY(-6px) rotate(-4deg) scale(1.03);
+}
+
+/* Slightly stronger surface on hover/focus */
+.role-card:focus,
+.role-card:hover{
+  background-color: var(--card-surface-hover);
+  border-color: var(--accent-1, var(--accent));
+  box-shadow: var(--shadow-strong);
+}
+
+/* Ensure icon colors follow theme (uses existing --icon-bg / --icon-color vars) */
+.role-card .icon{
+  background: var(--icon-bg);
+  color: var(--icon-color);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+/* extras */
+.extras{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.info-pill{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  background: var(--card-bg);
+  color: var(--muted-2);
+  font-size:13px;
+  border:1px solid rgba(255,255,255,0.02);
+  transition: transform var(--transition);
+}
+.info-pill:hover{ transform: translateY(-3px); }
+
+/* animations (only used in light theme lasers / sparkles) */
+@keyframes laserMove{
+  0%{ transform: translateX(-66%) rotate(-4deg); opacity:0; }
+  10%{ opacity:0.45; }
+  50%{ transform: translateX(0%) rotate(-4deg); opacity:0.8; }
+  90%{ opacity:0.28; }
+  100%{ transform: translateX(66%) rotate(-4deg); opacity:0; }
+}
+@keyframes sparkle{
+  0%{ transform: scale(.85); opacity:0; }
+  12%{ opacity:0.7; }
+  50%{ transform: scale(1.08); opacity:1; }
+  88%{ opacity:0.25; }
+  100%{ transform: scale(.95); opacity:0; }
+}
+
+/* entrance float (kept minimal) */
+@keyframes floatIn {
+  from { opacity:0; transform: translateY(8px) scale(.995); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+.role-card{ animation: floatIn 420ms var(--easing) both; }
+.role-card:nth-child(1){ animation-delay: 40ms; }
+.role-card:nth-child(2){ animation-delay: 80ms; }
+.role-card:nth-child(3){ animation-delay: 120ms; }
+
+/* Responsive */
+@media (max-width:520px){
+  body{ padding:18px; }
+  .glass-card{ padding:18px; }
+  .role-grid{ gap:10px; grid-template-columns: 1fr; }
+  .role-card{ padding:12px; min-height:92px; }
+  .role-card .icon{ width:48px; height:48px; border-radius:10px; }
+  .glass-card h1{ font-size:18px; }
+  .subtitle{ font-size:13px; }
+  html[data-theme="light"] .laser, html[data-theme="light"] .laser.alt{ display:none; } /* hide lasers on small devices */
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  * { animation:none !important; transition:none !important; }
+  html[data-theme="light"] .laser, html[data-theme="light"] .laser.alt { display:none !important; }
+}

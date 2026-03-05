@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - InternSarthi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Simple login form styling */
+        .login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .login-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="login-container">
+        <h2>🔐 Login to InternSarthi</h2>
+        <form onsubmit="event.preventDefault(); redirectToHome();">
+            <input type="email" placeholder="📧 Email" ><br>
+            <input type="tel" placeholder="📱 Phone Number"><br>
+            <input type="text" placeholder="🔢 Enter OTP" ><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        
+        function redirectToHome() {
+            window.location.href = "home_english.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #111827;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-bar {
+      max-width: 400px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-bar input, .search-bar select {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .candidate-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .candidate-table th, .candidate-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .candidate-table th {
+      background: #0078d7;
+      color: #fff;
+    }
+
+    .candidate-table tr:hover {
+      background: #f1f1f1;
+      cursor: pointer;
+    }
+
+    .details {
+      display: none;
+      padding: 12px;
+      background: #fafafa;
+      border-left: 4px solid #0078d7;
+    }
+
+    .details p {
+      margin: 4px 0;
+    }
+
+    .show {
+      display: table-row;
+    }
+  </style>
+</head>
+<body>
+  <h1>📋 Candidate Details</h1>
+
+  <!-- Search and Filter -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search by name...">
+    <select id="filterRole">
+      <option value="">All Roles</option>
+      <option value="Developer">Developer</option>
+      <option value="Designer">Designer</option>
+      <option value="Data Analyst">Data Analyst</option>
+    </select>
+  </div>
+
+  <!-- Candidate Table -->
+  <table class="candidate-table" id="candidateTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role Applied</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr onclick="toggleDetails(this)">
+        <td>Rahul Sharma</td>
+        <td>Developer</td>
+        <td>rahul.sharma@example.com</td>
+        <td>9876543210</td>
+      </tr>
+      <tr class="details">
+        <td colspan="4">
+          <p><b>Skills:</b> Java, React, SQL</p>
+          <p><b>Education:</b> B.Tech in CSE, IIT Delhi</p>
+          <p><b>Projects:</b> E-commerce Web App, Chatbot</p>
+        </td>
+      </tr>
+
+      <tr onclick="toggleDetails(this)">
+        <td>Priya Verma</td>
+        <td>Designer</td>
+        <td>priya.verma@example.com</td>
+        <td>9876501234</td>
+      </tr>
+      <tr class="details">
+        <td colspan="4">
+          <p><b>Skills:</b> Figma, Adobe XD, UI/UX</p>
+          <p><b>Education:</b> B.Des, NID Ahmedabad</p>
+          <p><b>Projects:</b> Mobile Banking App UI, Portfolio Website</p>
+        </td>
+      </tr>
+
+      <tr onclick="toggleDetails(this)">
+        <td>Amit Kumar</td>
+        <td>Data Analyst</td>
+        <td>amit.kumar@example.com</td>
+        <td>9988776655</td>
+      </tr>
+      <tr class="details">
+        <td colspan="4">
+          <p><b>Skills:</b> Python, PowerBI, SQL</p>
+          <p><b>Education:</b> M.Sc in Data Science, DU</p>
+          <p><b>Projects:</b> Sales Forecasting, Customer Segmentation</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function toggleDetails(row) {
+      let next = row.nextElementSibling;
+      if (next && next.classList.contains("details")) {
+        next.style.display = next.style.display === "table-row" ? "none" : "table-row";
+      }
+    }
+
+    // Search and Filter Logic
+    const searchInput = document.getElementById("searchInput");
+    const filterRole = document.getElementById("filterRole");
+    const table = document.getElementById("candidateTable").getElementsByTagName("tbody")[0];
+
+    function filterTable() {
+      let searchText = searchInput.value.toLowerCase();
+      let role = filterRole.value;
+
+      for (let i = 0; i < table.rows.length; i += 2) {
+        let row = table.rows[i];
+        let name = row.cells[0].innerText.toLowerCase();
+        let appliedRole = row.cells[1].innerText;
+
+        if ((name.includes(searchText)) && (role === "" || appliedRole === role)) {
+          row.style.display = "";
+          row.nextElementSibling.style.display = "none"; // collapse details
+        } else {
+          row.style.display = "none";
+          row.nextElementSibling.style.display = "none";
+        }
+      }
+    }
+
+    searchInput.addEventListener("keyup", filterTable);
+    filterRole.addEventListener("change", filterTable);
+  </script>
+</body>
+</html>

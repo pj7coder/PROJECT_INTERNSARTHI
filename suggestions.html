@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Video List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🎥 Best Suggestions For You</h1>
+  </header>
+
+  <main>
+    <ul class="video-list">
+      <li class="video-item">
+        <span class="video-title">Python Basics</span>
+        <button class="yt-btn" onclick="openVideo('https://youtu.be/UrsmFxEIp5k?si=53_nYLXqvupMHz6p')">
+          ▶ Watch
+        </button>
+      </li>
+      <li class="video-item">
+        <span class="video-title">C Language Tutorial</span>
+        <button class="yt-btn" onclick="openVideo('https://youtu.be/irqbmMNs2Bo?si=4-Re0dqMMt2rDnx1')">
+          ▶ Watch
+        </button>
+      </li>
+      <li class="video-item">
+        <span class="video-title">Web Development Guide</span>
+        <button class="yt-btn" onclick="openVideo('https://youtu.be/tVzUXW6siu0?si=eIl7uwKFtbtKDPd9')">
+          ▶ Watch
+        </button>
+      </li>
+    </ul>
+  </main>
+
+  <script>
+    function openVideo(url) {
+      window.open(url, "_blank");
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

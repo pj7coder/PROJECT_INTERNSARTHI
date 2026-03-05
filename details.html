@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Profile - InternSarthi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-top: 14px;
+            font-weight: bold;
+        }
+        .form-container input,
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .form-container button {
+            margin-top: 25px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="userForm">
+  <!-- all your input fields go here -->
+</form>
+    <div class="form-container">
+        <h2>📝 Update Your Profile</h2>
+            <label>Full Name</label>
+            <input type="text" name="fullName">
+
+            <label>Phone Number</label>
+            <input type="tel" name="phone">
+
+            <label>Email</label>
+            <input type="email" name="email">
+
+            <label>College Name</label>
+            <input type="text" name="college">
+
+            <label>Class 10th Percentage</label>
+            <input type="number" step="0.01" name="tenthPercent">
+
+            <label>Class 12th Percentage</label>
+            <input type="number" step="0.01" name="twelfthPercent">
+
+            <label>Graduation Percentage</label>
+            <input type="number" step="0.01" name="gradPercent">
+
+            <label>Graduation Grade (e.g., A, B+)</label>
+            <input type="text" name="gradGrade">
+
+            <label>Skills</label>
+            <textarea rows="3" name="skills" placeholder="e.g., Python, HTML, Communication"></textarea>
+
+            <label>Interests</label>
+            <textarea rows="3" name="interests" placeholder="e.g., Web Development, AI, Design"></textarea>
+
+            <label>Career Goals</label>
+            <textarea rows="2" name="careerGoals" placeholder="e.g., Become a backend developer, work in fintech"></textarea>
+
+            <label>Preferred Internship Location</label>
+            <select name="preferredLocation">
+                <option value="">-- Select --</option>
+                <option value="remote">Remote</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="onsite">Onsite</option>
+            </select>
+
+            <label>If Onsite, Preferred City</label>
+            <input type="text" name="preferredCity">
+
+            <label>Availability (Start Date)</label>
+            <input type="date" name="availability">
+
+            <label>LinkedIn or Portfolio URL</label>
+            <input type="url" name="portfolio">
+
+            <label>Languages Known</label>
+            <input type="text" name="languages">
+
+            <label>Projects or Achievements</label>
+            <textarea rows="3" name="projects"></textarea>
+
+            <label>Why are you seeking an internship?</label>
+            <textarea rows="3" name="motivation"></textarea>
+
+            <!-- Files skipped for now -->
+            <label>Upload CV</label>
+            <input type="file" name="cv">
+
+            <label>Upload Certificates</label>
+            <input type="file" multiple name="certificates">
+
+            <button type="submit">Update & Continue</button>
+        </form>
+    </div>
+    
+
+
+<script src="script.js"></script>
+</body>
+</html>

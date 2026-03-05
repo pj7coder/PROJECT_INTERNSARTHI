@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>InternSarthi - Company Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Popup base styles (theme-aware) */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2,6,23,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      position: relative;
+      background: var(--card, #fff);
+      color: var(--card-text, #222);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: 0;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      color: var(--text);
+    }
+    .popup-close:focus { outline: 3px solid rgba(102,140,255,0.18); outline-offset: 2px; }
+
+    body.dark-theme .popup-close { color: var(--card-text, var(--dark-text)); }
+
+    .popup-content h2 {
+      margin-bottom: 10px;
+      color: var(--section-text, var(--text));
+    }
+
+    .popup-content p {
+      margin-bottom: 15px;
+      color: var(--section-muted, rgba(17,24,39,0.7));
+    }
+
+    .popup-content button {
+      padding: 10px 15px;
+      border: none;
+      background: var(--button-bg, linear-gradient(135deg,#007bff,#0056b3));
+      color: var(--button-text, #fff);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 120ms ease;
+    }
+    .popup-content button:hover {
+      transform: translateY(-2px);
+      background: var(--button-hover, #0056b3);
+    }
+
+    body.dark-theme .popup {
+      background: rgba(2,6,23,0.75);
+    }
+    body.dark-theme .popup-content {
+      background: var(--card, linear-gradient(180deg,#16171a,#141418));
+      color: var(--card-text, var(--dark-text));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    body.dark-theme .popup-content p {
+      color: var(--section-muted, rgba(230,238,246,0.72));
+    }
+    body.dark-theme .popup-content button {
+      background: var(--apply-bg, linear-gradient(135deg,#00bfff,#0072ff));
+      color: var(--button-text, #fff);
+      box-shadow: 0 10px 28px rgba(0,110,200,0.28);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <h1>🏢 InternSarthi - Company</h1>
+    </div>
+
+    <nav>
+      <button onclick="location.href='company_home.html'">Dashboard</button>
+      <button onclick="location.href='company_login.html'">Company Profile</button>
+      <button onclick="location.href='main_login.html'">Sign out</button>
+      <button onclick="location.href='about.html'">About</button>
+    </nav>
+
+    <div id="controls">
+      <button id="theme-btn" onclick="toggleTheme()">🌓 Theme</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="profile-bar">
+      <div class="stat-box" onclick="openPopup('rating')">⭐ Company Rating: 4.7</div>
+      <div class="stat-box" onclick="openPopup('jobs')">📢 Active Job Posts: 12</div>
+      <div class="stat-box" onclick="openPopup('applicants')">👥 Applicants: 320</div>
+      <div class="stat-box" onclick="openPopup('hires')">✅ Successful Hires: 45</div>
+      <div class="stat-box" onclick="openPopup('reviews')">💬 Reviews: 89</div>
+    </section>
+
+    <section class="tab-grid">
+      <a href="job_posts.html" class="tab-box">💼<span class="label">Job Posts</span></a>
+      <a href="applications.html" class="tab-box">📄<span class="label">Applications</span></a>
+      <a href="candidates.html" class="tab-box">🎯<span class="label">Candidate Matches</span></a>
+      <a href="analytics.html" class="tab-box">📊<span class="label">Analytics</span></a>
+      <a href="feedback.html" class="tab-box">🗂️<span class="label">Feedback</span></a>
+    </section>
+
+    <section class="news-grid-section">
+      <h2>📰 Company Announcements</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <h3>🚀 New Job Posting Tools</h3>
+          <p>Post multiple roles faster with our streamlined job posting interface.</p>
+        </div>
+        <div class="news-card">
+          <h3>📊 Applicant Analytics</h3>
+          <p>Get detailed insights about applicants’ skills and trends across industries.</p>
+        </div>
+        <div class="news-card">
+          <h3>🌓 Theme Persistence</h3>
+          <p>Dark or light—your company dashboard now remembers your preference.</p>
+        </div>
+        <div class="news-card">
+          <h3>🤝 Successful Hiring Stories</h3>
+          <p>Read how top companies hired interns through InternSarthi’s matching engine.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup -->
+  <div id="popup" class="popup" aria-hidden="true">
+    <div class="popup-content">
+      <button class="popup-close" aria-label="Close popup" onclick="closePopup()">✕</button>
+      <h2 id="popup-title">Popup Title</h2>
+      <p id="popup-message">Popup message goes here...</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme(){
+      document.body.classList.toggle("dark-theme");
+      localStorage.setItem("theme", document.body.classList.contains("dark-theme") ? "dark" : "light");
+    }
+    (function(){
+      const saved = localStorage.getItem("theme");
+      if(saved==="dark") document.body.classList.add("dark-theme");
+    })();
+
+    function openPopup(type) {
+      const title = document.getElementById("popup-title");
+      const message = document.getElementById("popup-message");
+
+      switch(type) {
+        case "rating":
+          title.textContent = "⭐ Company Rating";
+          message.textContent = "Your company rating is based on recruiter credibility and intern feedback.";
+          break;
+        case "jobs":
+          title.textContent = "📢 Active Job Posts";
+          message.textContent = "You currently have 12 job posts open for applicants.";
+          break;
+        case "applicants":
+          title.textContent = "👥 Applicants";
+          message.textContent = "You have received 320 applications across all job posts.";
+          break;
+        case "hires":
+          title.textContent = "✅ Successful Hires";
+          message.textContent = "Your company has successfully hired 45 interns so far.";
+          break;
+        case "reviews":
+          title.textContent = "💬 Company Reviews";
+          message.textContent = "You have received 89 reviews from applicants and interns.";
+          break;
+      }
+
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>

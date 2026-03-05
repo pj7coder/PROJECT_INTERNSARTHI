@@ -1,0 +1,2283 @@
+[
+  {
+    "id": 1,
+    "name": "PrimeInnovations 1",
+    "link": "https://www.example.com/primeinnovations-1",
+    "type": "Startup",
+    "tags": [
+      "design",
+      "sales",
+      "azure"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "CoreSystems 2",
+    "link": "https://www.example.com/coresystems-2",
+    "type": "Research",
+    "tags": [
+      "ios",
+      "cloud"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "TechNetworks 3",
+    "link": "https://www.example.com/technetworks-3",
+    "type": "Consulting",
+    "tags": [
+      "sales",
+      "frontend",
+      "fullstack"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "InfoTechnologies 4",
+    "link": "https://www.example.com/infotechnologies-4",
+    "type": "Research",
+    "tags": [
+      "design",
+      "hr",
+      "mobile",
+      "frontend",
+      "cloud"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "SmartStudios 5",
+    "link": "https://www.example.com/smartstudios-5",
+    "type": "E-Comm",
+    "tags": [
+      "hr",
+      "analytics",
+      "sales",
+      "cloud"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "CoreSoft 6",
+    "link": "https://www.example.com/coresoft-6",
+    "type": "EdTech",
+    "tags": [
+      "mobile",
+      "cloud",
+      "sales"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "TechNetworks 7",
+    "link": "https://www.example.com/technetworks-7",
+    "type": "Finance",
+    "tags": [
+      "ios",
+      "testing",
+      "ml",
+      "marketing",
+      "security"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "CloudPlatforms 8",
+    "link": "https://www.example.com/cloudplatforms-8",
+    "type": "SaaS",
+    "tags": [
+      "security",
+      "product",
+      "analytics",
+      "qa"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "BlueDynamics 9",
+    "link": "https://www.example.com/bluedynamics-9",
+    "type": "Healthcare",
+    "tags": [
+      "gcp",
+      "product",
+      "mobile"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "TechStudios 10",
+    "link": "https://www.example.com/techstudios-10",
+    "type": "Startup",
+    "tags": [
+      "mobile",
+      "qa"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "GlobalVentures 11",
+    "link": "https://www.example.com/globalventures-11",
+    "type": "Research",
+    "tags": [
+      "backend",
+      "qa",
+      "testing",
+      "mobile",
+      "azure"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "ApexSolutions 12",
+    "link": "https://www.example.com/apexsolutions-12",
+    "type": "E-Comm",
+    "tags": [
+      "ux",
+      "design"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "BrightSolutions 13",
+    "link": "https://www.example.com/brightsolutions-13",
+    "type": "Research",
+    "tags": [
+      "ml",
+      "azure",
+      "product"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "BlueConsulting 14",
+    "link": "https://www.example.com/blueconsulting-14",
+    "type": "Startup",
+    "tags": [
+      "data",
+      "ui",
+      "devops",
+      "ai"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "CoreVentures 15",
+    "link": "https://www.example.com/coreventures-15",
+    "type": "Agency",
+    "tags": [
+      "azure",
+      "design",
+      "ux"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "PrimeInnovations 16",
+    "link": "https://www.example.com/primeinnovations-16",
+    "type": "Research",
+    "tags": [
+      "gcp",
+      "devops",
+      "embedded"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "ApexCreations 17",
+    "link": "https://www.example.com/apexcreations-17",
+    "type": "Healthcare",
+    "tags": [
+      "frontend",
+      "ios",
+      "embedded",
+      "android",
+      "marketing"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "CloudConsulting 18",
+    "link": "https://www.example.com/cloudconsulting-18",
+    "type": "Finance",
+    "tags": [
+      "data",
+      "qa",
+      "ios",
+      "azure",
+      "finance"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "DataTechnologies 19",
+    "link": "https://www.example.com/datatechnologies-19",
+    "type": "Consulting",
+    "tags": [
+      "marketing",
+      "testing",
+      "ui",
+      "azure",
+      "nlp"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "GlobalConsulting 20",
+    "link": "https://www.example.com/globalconsulting-20",
+    "type": "Agency",
+    "tags": [
+      "embedded",
+      "devops"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "CoreLabs 21",
+    "link": "https://www.example.com/corelabs-21",
+    "type": "Agency",
+    "tags": [
+      "embedded",
+      "fullstack"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "GreenNetworks 22",
+    "link": "https://www.example.com/greennetworks-22",
+    "type": "E-Comm",
+    "tags": [
+      "android",
+      "marketing"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "VertexEnterprises 23",
+    "link": "https://www.example.com/vertexenterprises-23",
+    "type": "E-Comm",
+    "tags": [
+      "ai",
+      "ios"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "PrimeDynamics 24",
+    "link": "https://www.example.com/primedynamics-24",
+    "type": "Healthcare",
+    "tags": [
+      "frontend",
+      "analytics"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "DataSystems 25",
+    "link": "https://www.example.com/datasystems-25",
+    "type": "SaaS",
+    "tags": [
+      "nlp",
+      "testing",
+      "cloud"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "NextInnovations 26",
+    "link": "https://www.example.com/nextinnovations-26",
+    "type": "Research",
+    "tags": [
+      "qa",
+      "ml",
+      "backend",
+      "sales"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "ApexSolutions 27",
+    "link": "https://www.example.com/apexsolutions-27",
+    "type": "Research",
+    "tags": [
+      "embedded",
+      "ux",
+      "qa",
+      "testing"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "NextTechnologies 28",
+    "link": "https://www.example.com/nexttechnologies-28",
+    "type": "SaaS",
+    "tags": [
+      "ux",
+      "ai",
+      "aws",
+      "design",
+      "android"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "TechCreations 29",
+    "link": "https://www.example.com/techcreations-29",
+    "type": "EdTech",
+    "tags": [
+      "data",
+      "marketing",
+      "devops",
+      "mobile",
+      "design"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "NovaTechnologies 30",
+    "link": "https://www.example.com/novatechnologies-30",
+    "type": "E-Comm",
+    "tags": [
+      "cloud",
+      "sales",
+      "ai",
+      "android",
+      "design"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "BrightAnalytics 31",
+    "link": "https://www.example.com/brightanalytics-31",
+    "type": "Research",
+    "tags": [
+      "design",
+      "backend"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "GlobalConsulting 32",
+    "link": "https://www.example.com/globalconsulting-32",
+    "type": "Product",
+    "tags": [
+      "ios",
+      "gcp",
+      "qa",
+      "devops"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "PulseCreations 33",
+    "link": "https://www.example.com/pulsecreations-33",
+    "type": "Finance",
+    "tags": [
+      "ios",
+      "embedded",
+      "ux"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "NextLabs 34",
+    "link": "https://www.example.com/nextlabs-34",
+    "type": "Healthcare",
+    "tags": [
+      "qa",
+      "design",
+      "mobile",
+      "marketing"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "PrimePlatforms 35",
+    "link": "https://www.example.com/primeplatforms-35",
+    "type": "E-Comm",
+    "tags": [
+      "ux",
+      "aws",
+      "product"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "NextInnovations 36",
+    "link": "https://www.example.com/nextinnovations-36",
+    "type": "Healthcare",
+    "tags": [
+      "hr",
+      "product",
+      "sales",
+      "design"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "ApexStudios 37",
+    "link": "https://www.example.com/apexstudios-37",
+    "type": "Product",
+    "tags": [
+      "ux",
+      "iot",
+      "sales",
+      "gcp"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "VertexCreations 38",
+    "link": "https://www.example.com/vertexcreations-38",
+    "type": "Product",
+    "tags": [
+      "ui",
+      "ios",
+      "data",
+      "analytics",
+      "nlp"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "InfoCreations 39",
+    "link": "https://www.example.com/infocreations-39",
+    "type": "E-Comm",
+    "tags": [
+      "azure",
+      "security"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "TechCreations 40",
+    "link": "https://www.example.com/techcreations-40",
+    "type": "SaaS",
+    "tags": [
+      "ios",
+      "cloud"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "NovaSoft 41",
+    "link": "https://www.example.com/novasoft-41",
+    "type": "Research",
+    "tags": [
+      "cloud",
+      "ai"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "OmegaStudios 42",
+    "link": "https://www.example.com/omegastudios-42",
+    "type": "Agency",
+    "tags": [
+      "security",
+      "nlp"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "GreenInnovations 43",
+    "link": "https://www.example.com/greeninnovations-43",
+    "type": "Startup",
+    "tags": [
+      "ux",
+      "iot",
+      "fullstack",
+      "embedded",
+      "ui"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "NexaTechnologies 44",
+    "link": "https://www.example.com/nexatechnologies-44",
+    "type": "Startup",
+    "tags": [
+      "cloud",
+      "qa",
+      "product",
+      "iot"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "SmartSoft 45",
+    "link": "https://www.example.com/smartsoft-45",
+    "type": "Research",
+    "tags": [
+      "cloud",
+      "marketing",
+      "analytics",
+      "android",
+      "aws"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "OmegaTechnologies 46",
+    "link": "https://www.example.com/omegatechnologies-46",
+    "type": "E-Comm",
+    "tags": [
+      "fullstack",
+      "ux",
+      "ml",
+      "frontend",
+      "aws"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "GlobalSolutions 47",
+    "link": "https://www.example.com/globalsolutions-47",
+    "type": "E-Comm",
+    "tags": [
+      "ui",
+      "marketing",
+      "aws"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "FusionEnterprises 48",
+    "link": "https://www.example.com/fusionenterprises-48",
+    "type": "EdTech",
+    "tags": [
+      "hr",
+      "ios",
+      "testing"
+    ]
+  },
+  {
+    "id": 49,
+    "name": "ApexInnovations 49",
+    "link": "https://www.example.com/apexinnovations-49",
+    "type": "Research",
+    "tags": [
+      "security",
+      "fullstack",
+      "qa"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "FusionVentures 50",
+    "link": "https://www.example.com/fusionventures-50",
+    "type": "Product",
+    "tags": [
+      "hr",
+      "frontend",
+      "ios",
+      "ml",
+      "mobile"
+    ]
+  },
+  {
+    "id": 51,
+    "name": "GreenSolutions",
+    "link": "https://www.example.com/greensolutions",
+    "type": "Finance",
+    "tags": [
+      "backend",
+      "aws",
+      "security",
+      "devops"
+    ]
+  },
+  {
+    "id": 52,
+    "name": "FusionLabs",
+    "link": "https://www.example.com/fusionlabs",
+    "type": "Product",
+    "tags": [
+      "testing",
+      "marketing"
+    ]
+  },
+  {
+    "id": 53,
+    "name": "BrightInnovations",
+    "link": "https://www.example.com/brightinnovations",
+    "type": "SaaS",
+    "tags": [
+      "android",
+      "backend",
+      "qa",
+      "sales",
+      "finance"
+    ]
+  },
+  {
+    "id": 54,
+    "name": "TechDynamics",
+    "link": "https://www.example.com/techdynamics",
+    "type": "Research",
+    "tags": [
+      "analytics",
+      "embedded",
+      "aws",
+      "cloud"
+    ]
+  },
+  {
+    "id": 55,
+    "name": "ApexVentures",
+    "link": "https://www.example.com/apexventures",
+    "type": "EdTech",
+    "tags": [
+      "fullstack",
+      "nlp",
+      "marketing"
+    ]
+  },
+  {
+    "id": 56,
+    "name": "OmegaCreations",
+    "link": "https://www.example.com/omegacreations",
+    "type": "Finance",
+    "tags": [
+      "ios",
+      "azure",
+      "security"
+    ]
+  },
+  {
+    "id": 57,
+    "name": "BlueSystems",
+    "link": "https://www.example.com/bluesystems",
+    "type": "Agency",
+    "tags": [
+      "ui",
+      "cloud",
+      "fullstack",
+      "ml"
+    ]
+  },
+  {
+    "id": 58,
+    "name": "TechWorks",
+    "link": "https://www.example.com/techworks",
+    "type": "Healthcare",
+    "tags": [
+      "product",
+      "gcp"
+    ]
+  },
+  {
+    "id": 59,
+    "name": "PulseConsulting",
+    "link": "https://www.example.com/pulseconsulting",
+    "type": "SaaS",
+    "tags": [
+      "ux",
+      "product"
+    ]
+  },
+  {
+    "id": 60,
+    "name": "NextSystems",
+    "link": "https://www.example.com/nextsystems",
+    "type": "Consulting",
+    "tags": [
+      "ml",
+      "sales"
+    ]
+  },
+  {
+    "id": 61,
+    "name": "NexaCreations",
+    "link": "https://www.example.com/nexacreations",
+    "type": "Startup",
+    "tags": [
+      "devops",
+      "cloud"
+    ]
+  },
+  {
+    "id": 62,
+    "name": "NextLabs",
+    "link": "https://www.example.com/nextlabs",
+    "type": "Agency",
+    "tags": [
+      "android",
+      "product",
+      "hr",
+      "backend",
+      "ux"
+    ]
+  },
+  {
+    "id": 63,
+    "name": "ApexInnovations",
+    "link": "https://www.example.com/apexinnovations",
+    "type": "Startup",
+    "tags": [
+      "cloud",
+      "finance"
+    ]
+  },
+  {
+    "id": 64,
+    "name": "ApexSolutions",
+    "link": "https://www.example.com/apexsolutions",
+    "type": "EdTech",
+    "tags": [
+      "devops",
+      "mobile",
+      "sales",
+      "ios"
+    ]
+  },
+  {
+    "id": 65,
+    "name": "CoreInnovations",
+    "link": "https://www.example.com/coreinnovations",
+    "type": "Research",
+    "tags": [
+      "frontend",
+      "backend",
+      "ux",
+      "cloud"
+    ]
+  },
+  {
+    "id": 66,
+    "name": "DataSystems",
+    "link": "https://www.example.com/datasystems",
+    "type": "Healthcare",
+    "tags": [
+      "hr",
+      "aws",
+      "ml",
+      "nlp",
+      "azure"
+    ]
+  },
+  {
+    "id": 67,
+    "name": "NovaPlatforms",
+    "link": "https://www.example.com/novaplatforms",
+    "type": "Finance",
+    "tags": [
+      "ios",
+      "data",
+      "frontend",
+      "ai"
+    ]
+  },
+  {
+    "id": 68,
+    "name": "PulseTechnologies",
+    "link": "https://www.example.com/pulsetechnologies",
+    "type": "EdTech",
+    "tags": [
+      "finance",
+      "ai",
+      "marketing"
+    ]
+  },
+  {
+    "id": 69,
+    "name": "CloudTechnologies",
+    "link": "https://www.example.com/cloudtechnologies",
+    "type": "Startup",
+    "tags": [
+      "data",
+      "analytics"
+    ]
+  },
+  {
+    "id": 70,
+    "name": "CoreDynamics",
+    "link": "https://www.example.com/coredynamics",
+    "type": "Consulting",
+    "tags": [
+      "finance",
+      "devops",
+      "security",
+      "sales"
+    ]
+  },
+  {
+    "id": 71,
+    "name": "GreenSoft",
+    "link": "https://www.example.com/greensoft",
+    "type": "SaaS",
+    "tags": [
+      "cloud",
+      "gcp",
+      "embedded",
+      "nlp"
+    ]
+  },
+  {
+    "id": 72,
+    "name": "ApexSolutions",
+    "link": "https://www.example.com/apexsolutions",
+    "type": "Startup",
+    "tags": [
+      "android",
+      "finance",
+      "testing",
+      "frontend"
+    ]
+  },
+  {
+    "id": 73,
+    "name": "AlphaSolutions",
+    "link": "https://www.example.com/alphasolutions",
+    "type": "Research",
+    "tags": [
+      "mobile",
+      "testing",
+      "devops",
+      "ai",
+      "marketing"
+    ]
+  },
+  {
+    "id": 74,
+    "name": "GlobalDynamics",
+    "link": "https://www.example.com/globaldynamics",
+    "type": "Healthcare",
+    "tags": [
+      "android",
+      "iot",
+      "product"
+    ]
+  },
+  {
+    "id": 75,
+    "name": "OmegaNetworks",
+    "link": "https://www.example.com/omeganetworks",
+    "type": "E-Comm",
+    "tags": [
+      "devops",
+      "analytics",
+      "ai",
+      "gcp"
+    ]
+  },
+  {
+    "id": 76,
+    "name": "VertexStudios",
+    "link": "https://www.example.com/vertexstudios",
+    "type": "Agency",
+    "tags": [
+      "mobile",
+      "hr",
+      "ux"
+    ]
+  },
+  {
+    "id": 77,
+    "name": "BrightSoft",
+    "link": "https://www.example.com/brightsoft",
+    "type": "Product",
+    "tags": [
+      "fullstack",
+      "frontend",
+      "embedded"
+    ]
+  },
+  {
+    "id": 78,
+    "name": "NovaVentures",
+    "link": "https://www.example.com/novaventures",
+    "type": "E-Comm",
+    "tags": [
+      "ui",
+      "frontend",
+      "ux",
+      "mobile"
+    ]
+  },
+  {
+    "id": 79,
+    "name": "PrimeAnalytics",
+    "link": "https://www.example.com/primeanalytics",
+    "type": "Agency",
+    "tags": [
+      "mobile",
+      "sales",
+      "security",
+      "iot",
+      "finance"
+    ]
+  },
+  {
+    "id": 80,
+    "name": "BrightInnovations",
+    "link": "https://www.example.com/brightinnovations",
+    "type": "EdTech",
+    "tags": [
+      "design",
+      "analytics",
+      "iot",
+      "qa",
+      "nlp"
+    ]
+  },
+  {
+    "id": 81,
+    "name": "OmegaAnalytics",
+    "link": "https://www.example.com/omegaanalytics",
+    "type": "Healthcare",
+    "tags": [
+      "nlp",
+      "cloud",
+      "sales",
+      "security"
+    ]
+  },
+  {
+    "id": 82,
+    "name": "PulseLabs",
+    "link": "https://www.example.com/pulselabs",
+    "type": "Finance",
+    "tags": [
+      "frontend",
+      "devops",
+      "ux"
+    ]
+  },
+  {
+    "id": 83,
+    "name": "FusionVentures",
+    "link": "https://www.example.com/fusionventures",
+    "type": "Consulting",
+    "tags": [
+      "security",
+      "android"
+    ]
+  },
+  {
+    "id": 84,
+    "name": "GlobalTechnologies",
+    "link": "https://www.example.com/globaltechnologies",
+    "type": "Startup",
+    "tags": [
+      "nlp",
+      "ios"
+    ]
+  },
+  {
+    "id": 85,
+    "name": "DataNetworks",
+    "link": "https://www.example.com/datanetworks",
+    "type": "Agency",
+    "tags": [
+      "devops",
+      "analytics"
+    ]
+  },
+  {
+    "id": 86,
+    "name": "CloudVentures",
+    "link": "https://www.example.com/cloudventures",
+    "type": "Healthcare",
+    "tags": [
+      "iot",
+      "ml",
+      "hr",
+      "product",
+      "devops"
+    ]
+  },
+  {
+    "id": 87,
+    "name": "OmegaPlatforms",
+    "link": "https://www.example.com/omegaplatforms",
+    "type": "EdTech",
+    "tags": [
+      "ux",
+      "testing",
+      "hr",
+      "nlp"
+    ]
+  },
+  {
+    "id": 88,
+    "name": "NexaSystems",
+    "link": "https://www.example.com/nexasystems",
+    "type": "Finance",
+    "tags": [
+      "qa",
+      "security",
+      "fullstack",
+      "product"
+    ]
+  },
+  {
+    "id": 89,
+    "name": "GlobalConsulting",
+    "link": "https://www.example.com/globalconsulting",
+    "type": "Product",
+    "tags": [
+      "embedded",
+      "gcp"
+    ]
+  },
+  {
+    "id": 90,
+    "name": "GlobalCreations",
+    "link": "https://www.example.com/globalcreations",
+    "type": "Agency",
+    "tags": [
+      "devops",
+      "aws"
+    ]
+  },
+  {
+    "id": 91,
+    "name": "DataPlatforms",
+    "link": "https://www.example.com/dataplatforms",
+    "type": "Product",
+    "tags": [
+      "finance",
+      "android",
+      "ui"
+    ]
+  },
+  {
+    "id": 92,
+    "name": "BrightInnovations",
+    "link": "https://www.example.com/brightinnovations",
+    "type": "SaaS",
+    "tags": [
+      "cloud",
+      "ios",
+      "ai",
+      "sales",
+      "product"
+    ]
+  },
+  {
+    "id": 93,
+    "name": "CoreLabs",
+    "link": "https://www.example.com/corelabs",
+    "type": "Startup",
+    "tags": [
+      "devops",
+      "mobile",
+      "nlp",
+      "gcp",
+      "ui"
+    ]
+  },
+  {
+    "id": 94,
+    "name": "CoreCreations",
+    "link": "https://www.example.com/corecreations",
+    "type": "Healthcare",
+    "tags": [
+      "aws",
+      "security",
+      "embedded",
+      "devops",
+      "mobile"
+    ]
+  },
+  {
+    "id": 95,
+    "name": "NexaSolutions",
+    "link": "https://www.example.com/nexasolutions",
+    "type": "Startup",
+    "tags": [
+      "sales",
+      "testing",
+      "ios",
+      "android",
+      "frontend"
+    ]
+  },
+  {
+    "id": 96,
+    "name": "NexaDynamics",
+    "link": "https://www.example.com/nexadynamics",
+    "type": "Healthcare",
+    "tags": [
+      "aws",
+      "analytics",
+      "ai"
+    ]
+  },
+  {
+    "id": 97,
+    "name": "TechPlatforms",
+    "link": "https://www.example.com/techplatforms",
+    "type": "Agency",
+    "tags": [
+      "android",
+      "devops",
+      "gcp",
+      "ux"
+    ]
+  },
+  {
+    "id": 98,
+    "name": "NovaConsulting",
+    "link": "https://www.example.com/novaconsulting",
+    "type": "Product",
+    "tags": [
+      "ml",
+      "data",
+      "hr"
+    ]
+  },
+  {
+    "id": 99,
+    "name": "AlphaConsulting",
+    "link": "https://www.example.com/alphaconsulting",
+    "type": "SaaS",
+    "tags": [
+      "ui",
+      "analytics"
+    ]
+  },
+  {
+    "id": 100,
+    "name": "OmegaPlatforms",
+    "link": "https://www.example.com/omegaplatforms",
+    "type": "SaaS",
+    "tags": [
+      "backend",
+      "mobile"
+    ]
+  },
+  {
+    "id": 101,
+    "name": "PrimeDynamics",
+    "link": "https://www.example.com/primedynamics",
+    "type": "Finance",
+    "tags": [
+      "backend",
+      "qa",
+      "devops",
+      "aws"
+    ]
+  },
+  {
+    "id": 102,
+    "name": "DataSoft",
+    "link": "https://www.example.com/datasoft",
+    "type": "Consulting",
+    "tags": [
+      "mobile",
+      "analytics"
+    ]
+  },
+  {
+    "id": 103,
+    "name": "ApexPlatforms",
+    "link": "https://www.example.com/apexplatforms",
+    "type": "Product",
+    "tags": [
+      "nlp",
+      "ml"
+    ]
+  },
+  {
+    "id": 104,
+    "name": "NovaLabs",
+    "link": "https://www.example.com/novalabs",
+    "type": "E-Comm",
+    "tags": [
+      "frontend",
+      "backend"
+    ]
+  },
+  {
+    "id": 105,
+    "name": "OmegaSoft",
+    "link": "https://www.example.com/omegasoft",
+    "type": "Agency",
+    "tags": [
+      "android",
+      "aws",
+      "ml",
+      "nlp",
+      "analytics"
+    ]
+  },
+  {
+    "id": 106,
+    "name": "GlobalNetworks",
+    "link": "https://www.example.com/globalnetworks",
+    "type": "SaaS",
+    "tags": [
+      "iot",
+      "azure",
+      "backend"
+    ]
+  },
+  {
+    "id": 107,
+    "name": "InfoAnalytics",
+    "link": "https://www.example.com/infoanalytics",
+    "type": "Agency",
+    "tags": [
+      "ui",
+      "frontend"
+    ]
+  },
+  {
+    "id": 108,
+    "name": "OmegaNetworks",
+    "link": "https://www.example.com/omeganetworks",
+    "type": "SaaS",
+    "tags": [
+      "cloud",
+      "devops",
+      "embedded",
+      "product",
+      "security"
+    ]
+  },
+  {
+    "id": 109,
+    "name": "NovaCreations",
+    "link": "https://www.example.com/novacreations",
+    "type": "E-Comm",
+    "tags": [
+      "aws",
+      "frontend",
+      "mobile",
+      "devops"
+    ]
+  },
+  {
+    "id": 110,
+    "name": "DataCreations",
+    "link": "https://www.example.com/datacreations",
+    "type": "Finance",
+    "tags": [
+      "azure",
+      "gcp",
+      "sales"
+    ]
+  },
+  {
+    "id": 111,
+    "name": "CorePlatforms",
+    "link": "https://www.example.com/coreplatforms",
+    "type": "Startup",
+    "tags": [
+      "gcp",
+      "ai"
+    ]
+  },
+  {
+    "id": 112,
+    "name": "DataCreations",
+    "link": "https://www.example.com/datacreations",
+    "type": "Startup",
+    "tags": [
+      "ai",
+      "aws",
+      "sales",
+      "qa"
+    ]
+  },
+  {
+    "id": 113,
+    "name": "OmegaVentures",
+    "link": "https://www.example.com/omegaventures",
+    "type": "Startup",
+    "tags": [
+      "fullstack",
+      "testing",
+      "qa",
+      "android",
+      "product"
+    ]
+  },
+  {
+    "id": 114,
+    "name": "SmartSystems",
+    "link": "https://www.example.com/smartsystems",
+    "type": "EdTech",
+    "tags": [
+      "aws",
+      "ai",
+      "analytics",
+      "fullstack",
+      "devops"
+    ]
+  },
+  {
+    "id": 115,
+    "name": "GlobalSystems",
+    "link": "https://www.example.com/globalsystems",
+    "type": "Startup",
+    "tags": [
+      "design",
+      "hr",
+      "embedded",
+      "testing"
+    ]
+  },
+  {
+    "id": 116,
+    "name": "OmegaEnterprises",
+    "link": "https://www.example.com/omegaenterprises",
+    "type": "Product",
+    "tags": [
+      "aws",
+      "azure",
+      "gcp",
+      "product",
+      "finance"
+    ]
+  },
+  {
+    "id": 117,
+    "name": "InfoInnovations",
+    "link": "https://www.example.com/infoinnovations",
+    "type": "Healthcare",
+    "tags": [
+      "sales",
+      "ux",
+      "testing"
+    ]
+  },
+  {
+    "id": 118,
+    "name": "FusionConsulting",
+    "link": "https://www.example.com/fusionconsulting",
+    "type": "Finance",
+    "tags": [
+      "data",
+      "devops"
+    ]
+  },
+  {
+    "id": 119,
+    "name": "NovaConsulting",
+    "link": "https://www.example.com/novaconsulting",
+    "type": "SaaS",
+    "tags": [
+      "mobile",
+      "marketing",
+      "iot",
+      "devops"
+    ]
+  },
+  {
+    "id": 120,
+    "name": "NovaConsulting",
+    "link": "https://www.example.com/novaconsulting",
+    "type": "Healthcare",
+    "tags": [
+      "sales",
+      "security"
+    ]
+  },
+  {
+    "id": 121,
+    "name": "PrimeWorks",
+    "link": "https://www.example.com/primeworks",
+    "type": "Healthcare",
+    "tags": [
+      "android",
+      "backend"
+    ]
+  },
+  {
+    "id": 122,
+    "name": "ApexPlatforms",
+    "link": "https://www.example.com/apexplatforms",
+    "type": "EdTech",
+    "tags": [
+      "mobile",
+      "sales"
+    ]
+  },
+  {
+    "id": 123,
+    "name": "NextNetworks",
+    "link": "https://www.example.com/nextnetworks",
+    "type": "SaaS",
+    "tags": [
+      "security",
+      "frontend"
+    ]
+  },
+  {
+    "id": 124,
+    "name": "AlphaInnovations",
+    "link": "https://www.example.com/alphainnovations",
+    "type": "EdTech",
+    "tags": [
+      "security",
+      "embedded",
+      "azure"
+    ]
+  },
+  {
+    "id": 125,
+    "name": "TechNetworks",
+    "link": "https://www.example.com/technetworks",
+    "type": "EdTech",
+    "tags": [
+      "mobile",
+      "security",
+      "sales"
+    ]
+  },
+  {
+    "id": 126,
+    "name": "CoreConsulting",
+    "link": "https://www.example.com/coreconsulting",
+    "type": "Healthcare",
+    "tags": [
+      "analytics",
+      "data",
+      "ml",
+      "cloud"
+    ]
+  },
+  {
+    "id": 127,
+    "name": "FusionVentures",
+    "link": "https://www.example.com/fusionventures",
+    "type": "Consulting",
+    "tags": [
+      "devops",
+      "analytics",
+      "data",
+      "hr"
+    ]
+  },
+  {
+    "id": 128,
+    "name": "GreenStudios",
+    "link": "https://www.example.com/greenstudios",
+    "type": "E-Comm",
+    "tags": [
+      "ui",
+      "ai",
+      "gcp",
+      "ml"
+    ]
+  },
+  {
+    "id": 129,
+    "name": "GreenCreations",
+    "link": "https://www.example.com/greencreations",
+    "type": "E-Comm",
+    "tags": [
+      "design",
+      "ai"
+    ]
+  },
+  {
+    "id": 130,
+    "name": "BlueConsulting",
+    "link": "https://www.example.com/blueconsulting",
+    "type": "Startup",
+    "tags": [
+      "ai",
+      "marketing",
+      "hr"
+    ]
+  },
+  {
+    "id": 131,
+    "name": "BrightStudios",
+    "link": "https://www.example.com/brightstudios",
+    "type": "SaaS",
+    "tags": [
+      "android",
+      "ui",
+      "ux",
+      "aws",
+      "security"
+    ]
+  },
+  {
+    "id": 132,
+    "name": "SmartTechnologies",
+    "link": "https://www.example.com/smarttechnologies",
+    "type": "Agency",
+    "tags": [
+      "azure",
+      "security"
+    ]
+  },
+  {
+    "id": 133,
+    "name": "GlobalAnalytics",
+    "link": "https://www.example.com/globalanalytics",
+    "type": "Consulting",
+    "tags": [
+      "iot",
+      "gcp",
+      "fullstack",
+      "security",
+      "frontend"
+    ]
+  },
+  {
+    "id": 134,
+    "name": "NexaSolutions",
+    "link": "https://www.example.com/nexasolutions",
+    "type": "Product",
+    "tags": [
+      "cloud",
+      "analytics",
+      "embedded",
+      "sales"
+    ]
+  },
+  {
+    "id": 135,
+    "name": "BrightSystems",
+    "link": "https://www.example.com/brightsystems",
+    "type": "SaaS",
+    "tags": [
+      "aws",
+      "design"
+    ]
+  },
+  {
+    "id": 136,
+    "name": "NextNetworks",
+    "link": "https://www.example.com/nextnetworks",
+    "type": "EdTech",
+    "tags": [
+      "mobile",
+      "fullstack",
+      "qa"
+    ]
+  },
+  {
+    "id": 137,
+    "name": "VertexCreations",
+    "link": "https://www.example.com/vertexcreations",
+    "type": "SaaS",
+    "tags": [
+      "embedded",
+      "finance",
+      "android",
+      "frontend"
+    ]
+  },
+  {
+    "id": 138,
+    "name": "NovaNetworks",
+    "link": "https://www.example.com/novanetworks",
+    "type": "SaaS",
+    "tags": [
+      "ios",
+      "sales",
+      "azure",
+      "ai",
+      "embedded"
+    ]
+  },
+  {
+    "id": 139,
+    "name": "GreenLabs",
+    "link": "https://www.example.com/greenlabs",
+    "type": "E-Comm",
+    "tags": [
+      "design",
+      "backend",
+      "nlp",
+      "frontend"
+    ]
+  },
+  {
+    "id": 140,
+    "name": "PulseNetworks",
+    "link": "https://www.example.com/pulsenetworks",
+    "type": "Agency",
+    "tags": [
+      "product",
+      "sales"
+    ]
+  },
+  {
+    "id": 141,
+    "name": "NexaTechnologies",
+    "link": "https://www.example.com/nexatechnologies",
+    "type": "Consulting",
+    "tags": [
+      "marketing",
+      "ux",
+      "ml",
+      "backend",
+      "design"
+    ]
+  },
+  {
+    "id": 142,
+    "name": "InfoVentures",
+    "link": "https://www.example.com/infoventures",
+    "type": "EdTech",
+    "tags": [
+      "ml",
+      "testing"
+    ]
+  },
+  {
+    "id": 143,
+    "name": "NexaCreations",
+    "link": "https://www.example.com/nexacreations",
+    "type": "Product",
+    "tags": [
+      "iot",
+      "gcp",
+      "ui",
+      "embedded"
+    ]
+  },
+  {
+    "id": 144,
+    "name": "PrimeInnovations",
+    "link": "https://www.example.com/primeinnovations",
+    "type": "Research",
+    "tags": [
+      "marketing",
+      "fullstack"
+    ]
+  },
+  {
+    "id": 145,
+    "name": "BlueLabs",
+    "link": "https://www.example.com/bluelabs",
+    "type": "Healthcare",
+    "tags": [
+      "data",
+      "iot",
+      "backend",
+      "design"
+    ]
+  },
+  {
+    "id": 146,
+    "name": "GlobalStudios",
+    "link": "https://www.example.com/globalstudios",
+    "type": "E-Comm",
+    "tags": [
+      "fullstack",
+      "gcp"
+    ]
+  },
+  {
+    "id": 147,
+    "name": "CoreStudios",
+    "link": "https://www.example.com/corestudios",
+    "type": "Startup",
+    "tags": [
+      "ux",
+      "ios",
+      "mobile",
+      "aws"
+    ]
+  },
+  {
+    "id": 148,
+    "name": "AlphaSolutions",
+    "link": "https://www.example.com/alphasolutions",
+    "type": "Startup",
+    "tags": [
+      "product",
+      "frontend",
+      "ux"
+    ]
+  },
+  {
+    "id": 149,
+    "name": "DataWorks",
+    "link": "https://www.example.com/dataworks",
+    "type": "Startup",
+    "tags": [
+      "android",
+      "gcp"
+    ]
+  },
+  {
+    "id": 150,
+    "name": "SmartNetworks",
+    "link": "https://www.example.com/smartnetworks",
+    "type": "SaaS",
+    "tags": [
+      "cloud",
+      "sales"
+    ]
+  },
+  {
+    "id": 151,
+    "name": "CloudSoft",
+    "link": "https://www.example.com/cloudsoft",
+    "type": "Research",
+    "tags": [
+      "nlp",
+      "sales",
+      "devops",
+      "mobile",
+      "marketing"
+    ]
+  },
+  {
+    "id": 152,
+    "name": "PulsePlatforms",
+    "link": "https://www.example.com/pulseplatforms",
+    "type": "Startup",
+    "tags": [
+      "testing",
+      "mobile",
+      "ios"
+    ]
+  },
+  {
+    "id": 153,
+    "name": "PrimeDynamics",
+    "link": "https://www.example.com/primedynamics",
+    "type": "Startup",
+    "tags": [
+      "marketing",
+      "ui"
+    ]
+  },
+  {
+    "id": 154,
+    "name": "GlobalInnovations",
+    "link": "https://www.example.com/globalinnovations",
+    "type": "SaaS",
+    "tags": [
+      "frontend",
+      "ai"
+    ]
+  },
+  {
+    "id": 155,
+    "name": "TechSystems",
+    "link": "https://www.example.com/techsystems",
+    "type": "Finance",
+    "tags": [
+      "hr",
+      "sales",
+      "ios",
+      "backend",
+      "iot"
+    ]
+  },
+  {
+    "id": 156,
+    "name": "FusionSystems",
+    "link": "https://www.example.com/fusionsystems",
+    "type": "Finance",
+    "tags": [
+      "azure",
+      "fullstack",
+      "nlp",
+      "qa"
+    ]
+  },
+  {
+    "id": 157,
+    "name": "OmegaLabs",
+    "link": "https://www.example.com/omegalabs",
+    "type": "E-Comm",
+    "tags": [
+      "gcp",
+      "mobile",
+      "hr",
+      "backend",
+      "embedded"
+    ]
+  },
+  {
+    "id": 158,
+    "name": "BrightConsulting",
+    "link": "https://www.example.com/brightconsulting",
+    "type": "Startup",
+    "tags": [
+      "android",
+      "marketing",
+      "azure",
+      "nlp"
+    ]
+  },
+  {
+    "id": 159,
+    "name": "InfoCreations",
+    "link": "https://www.example.com/infocreations",
+    "type": "Agency",
+    "tags": [
+      "frontend",
+      "design",
+      "fullstack",
+      "product",
+      "gcp"
+    ]
+  },
+  {
+    "id": 160,
+    "name": "GreenDynamics",
+    "link": "https://www.example.com/greendynamics",
+    "type": "Product",
+    "tags": [
+      "fullstack",
+      "sales"
+    ]
+  },
+  {
+    "id": 161,
+    "name": "OmegaNetworks",
+    "link": "https://www.example.com/omeganetworks",
+    "type": "SaaS",
+    "tags": [
+      "ux",
+      "ai",
+      "marketing"
+    ]
+  },
+  {
+    "id": 162,
+    "name": "TechLabs",
+    "link": "https://www.example.com/techlabs",
+    "type": "Product",
+    "tags": [
+      "nlp",
+      "embedded",
+      "ios",
+      "testing"
+    ]
+  },
+  {
+    "id": 163,
+    "name": "TechPlatforms",
+    "link": "https://www.example.com/techplatforms",
+    "type": "Finance",
+    "tags": [
+      "ml",
+      "qa",
+      "ux",
+      "testing",
+      "backend"
+    ]
+  },
+  {
+    "id": 164,
+    "name": "DataLabs",
+    "link": "https://www.example.com/datalabs",
+    "type": "Agency",
+    "tags": [
+      "nlp",
+      "qa",
+      "product",
+      "security"
+    ]
+  },
+  {
+    "id": 165,
+    "name": "PrimeStudios",
+    "link": "https://www.example.com/primestudios",
+    "type": "Agency",
+    "tags": [
+      "ui",
+      "ios",
+      "ml",
+      "azure"
+    ]
+  },
+  {
+    "id": 166,
+    "name": "SmartSystems",
+    "link": "https://www.example.com/smartsystems",
+    "type": "EdTech",
+    "tags": [
+      "sales",
+      "ios",
+      "qa"
+    ]
+  },
+  {
+    "id": 167,
+    "name": "SmartCreations",
+    "link": "https://www.example.com/smartcreations",
+    "type": "SaaS",
+    "tags": [
+      "product",
+      "azure"
+    ]
+  },
+  {
+    "id": 168,
+    "name": "CloudVentures",
+    "link": "https://www.example.com/cloudventures",
+    "type": "Consulting",
+    "tags": [
+      "qa",
+      "nlp",
+      "design"
+    ]
+  },
+  {
+    "id": 169,
+    "name": "PrimeTechnologies",
+    "link": "https://www.example.com/primetechnologies",
+    "type": "SaaS",
+    "tags": [
+      "design",
+      "finance",
+      "devops"
+    ]
+  },
+  {
+    "id": 170,
+    "name": "FusionNetworks",
+    "link": "https://www.example.com/fusionnetworks",
+    "type": "E-Comm",
+    "tags": [
+      "gcp",
+      "sales",
+      "testing",
+      "ux"
+    ]
+  },
+  {
+    "id": 171,
+    "name": "PulseConsulting",
+    "link": "https://www.example.com/pulseconsulting",
+    "type": "Consulting",
+    "tags": [
+      "iot",
+      "devops",
+      "data",
+      "ai",
+      "nlp"
+    ]
+  },
+  {
+    "id": 172,
+    "name": "BlueInnovations",
+    "link": "https://www.example.com/blueinnovations",
+    "type": "Product",
+    "tags": [
+      "ux",
+      "backend",
+      "qa",
+      "azure"
+    ]
+  },
+  {
+    "id": 173,
+    "name": "TechVentures",
+    "link": "https://www.example.com/techventures",
+    "type": "EdTech",
+    "tags": [
+      "android",
+      "backend",
+      "frontend"
+    ]
+  },
+  {
+    "id": 174,
+    "name": "InfoPlatforms",
+    "link": "https://www.example.com/infoplatforms",
+    "type": "Startup",
+    "tags": [
+      "ios",
+      "ai"
+    ]
+  },
+  {
+    "id": 175,
+    "name": "BrightSolutions",
+    "link": "https://www.example.com/brightsolutions",
+    "type": "EdTech",
+    "tags": [
+      "testing",
+      "gcp",
+      "product",
+      "hr"
+    ]
+  },
+  {
+    "id": 176,
+    "name": "VertexVentures",
+    "link": "https://www.example.com/vertexventures",
+    "type": "Product",
+    "tags": [
+      "ml",
+      "marketing",
+      "cloud"
+    ]
+  },
+  {
+    "id": 177,
+    "name": "VertexSystems",
+    "link": "https://www.example.com/vertexsystems",
+    "type": "SaaS",
+    "tags": [
+      "testing",
+      "sales",
+      "mobile"
+    ]
+  },
+  {
+    "id": 178,
+    "name": "AlphaPlatforms",
+    "link": "https://www.example.com/alphaplatforms",
+    "type": "Research",
+    "tags": [
+      "marketing",
+      "android",
+      "ai"
+    ]
+  },
+  {
+    "id": 179,
+    "name": "NextVentures",
+    "link": "https://www.example.com/nextventures",
+    "type": "Finance",
+    "tags": [
+      "data",
+      "design",
+      "hr",
+      "cloud"
+    ]
+  },
+  {
+    "id": 180,
+    "name": "PulseDynamics",
+    "link": "https://www.example.com/pulsedynamics",
+    "type": "Product",
+    "tags": [
+      "finance",
+      "iot",
+      "security"
+    ]
+  },
+  {
+    "id": 181,
+    "name": "PrimePlatforms",
+    "link": "https://www.example.com/primeplatforms",
+    "type": "Startup",
+    "tags": [
+      "embedded",
+      "devops"
+    ]
+  },
+  {
+    "id": 182,
+    "name": "GlobalSystems",
+    "link": "https://www.example.com/globalsystems",
+    "type": "E-Comm",
+    "tags": [
+      "devops",
+      "frontend",
+      "marketing"
+    ]
+  },
+  {
+    "id": 183,
+    "name": "TechInnovations",
+    "link": "https://www.example.com/techinnovations",
+    "type": "Finance",
+    "tags": [
+      "iot",
+      "android"
+    ]
+  },
+  {
+    "id": 184,
+    "name": "CoreEnterprises",
+    "link": "https://www.example.com/coreenterprises",
+    "type": "E-Comm",
+    "tags": [
+      "analytics",
+      "ios",
+      "data",
+      "fullstack"
+    ]
+  },
+  {
+    "id": 185,
+    "name": "TechConsulting",
+    "link": "https://www.example.com/techconsulting",
+    "type": "E-Comm",
+    "tags": [
+      "ui",
+      "nlp"
+    ]
+  },
+  {
+    "id": 186,
+    "name": "AlphaDynamics",
+    "link": "https://www.example.com/alphadynamics",
+    "type": "SaaS",
+    "tags": [
+      "android",
+      "analytics",
+      "hr",
+      "frontend",
+      "sales"
+    ]
+  },
+  {
+    "id": 187,
+    "name": "CoreNetworks",
+    "link": "https://www.example.com/corenetworks",
+    "type": "Healthcare",
+    "tags": [
+      "qa",
+      "nlp"
+    ]
+  },
+  {
+    "id": 188,
+    "name": "GreenStudios",
+    "link": "https://www.example.com/greenstudios",
+    "type": "Startup",
+    "tags": [
+      "ux",
+      "product",
+      "ui"
+    ]
+  },
+  {
+    "id": 189,
+    "name": "AlphaTechnologies",
+    "link": "https://www.example.com/alphatechnologies",
+    "type": "Product",
+    "tags": [
+      "testing",
+      "analytics"
+    ]
+  },
+  {
+    "id": 190,
+    "name": "AlphaTechnologies",
+    "link": "https://www.example.com/alphatechnologies",
+    "type": "Startup",
+    "tags": [
+      "testing",
+      "product",
+      "ui",
+      "fullstack",
+      "frontend"
+    ]
+  },
+  {
+    "id": 191,
+    "name": "InfoSolutions",
+    "link": "https://www.example.com/infosolutions",
+    "type": "Agency",
+    "tags": [
+      "nlp",
+      "security"
+    ]
+  },
+  {
+    "id": 192,
+    "name": "CloudWorks",
+    "link": "https://www.example.com/cloudworks",
+    "type": "Startup",
+    "tags": [
+      "testing",
+      "analytics"
+    ]
+  },
+  {
+    "id": 193,
+    "name": "DataInnovations",
+    "link": "https://www.example.com/datainnovations",
+    "type": "SaaS",
+    "tags": [
+      "data",
+      "fullstack"
+    ]
+  },
+  {
+    "id": 194,
+    "name": "PulseSolutions",
+    "link": "https://www.example.com/pulsesolutions",
+    "type": "Research",
+    "tags": [
+      "nlp",
+      "marketing",
+      "sales"
+    ]
+  },
+  {
+    "id": 195,
+    "name": "VertexLabs",
+    "link": "https://www.example.com/vertexlabs",
+    "type": "SaaS",
+    "tags": [
+      "ui",
+      "cloud",
+      "ml",
+      "design"
+    ]
+  },
+  {
+    "id": 196,
+    "name": "InfoConsulting",
+    "link": "https://www.example.com/infoconsulting",
+    "type": "EdTech",
+    "tags": [
+      "ios",
+      "iot",
+      "analytics"
+    ]
+  },
+  {
+    "id": 197,
+    "name": "VertexSolutions",
+    "link": "https://www.example.com/vertexsolutions",
+    "type": "Product",
+    "tags": [
+      "ui",
+      "ai",
+      "marketing",
+      "sales"
+    ]
+  },
+  {
+    "id": 198,
+    "name": "FusionTechnologies",
+    "link": "https://www.example.com/fusiontechnologies",
+    "type": "Consulting",
+    "tags": [
+      "testing",
+      "iot",
+      "frontend",
+      "data",
+      "hr"
+    ]
+  },
+  {
+    "id": 199,
+    "name": "AlphaSolutions",
+    "link": "https://www.example.com/alphasolutions",
+    "type": "EdTech",
+    "tags": [
+      "sales",
+      "embedded",
+      "marketing",
+      "security",
+      "nlp"
+    ]
+  },
+  {
+    "id": 200,
+    "name": "VertexInnovations",
+    "link": "https://www.example.com/vertexinnovations",
+    "type": "SaaS",
+    "tags": [
+      "data",
+      "azure",
+      "embedded",
+      "ux"
+    ]
+  }
+]

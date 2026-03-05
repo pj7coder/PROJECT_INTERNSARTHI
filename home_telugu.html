@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>InternSarthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Popup base styles (theme-aware) */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2,6,23,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: var(--card, #fff);
+      color: var(--card-text, #222);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 10px;
+      color: var(--section-text, var(--text));
+    }
+
+    .popup-content p {
+      margin-bottom: 15px;
+      color: var(--section-muted, rgba(17,24,39,0.7));
+    }
+
+    .popup-content button {
+      padding: 10px 15px;
+      border: none;
+      background: var(--button-bg, linear-gradient(135deg,#007bff,#0056b3));
+      color: var(--button-text, #fff);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 120ms ease;
+    }
+
+    .popup-content button:hover {
+      transform: translateY(-2px);
+      background: var(--button-hover, #0056b3);
+    }
+
+    body.dark-theme .popup {
+      background: rgba(2,6,23,0.75);
+    }
+    body.dark-theme .popup-content {
+      background: var(--card, linear-gradient(180deg,#16171a,#141418));
+      color: var(--card-text, var(--dark-text));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    body.dark-theme .popup-content p {
+      color: var(--section-muted, rgba(230,238,246,0.72));
+    }
+    body.dark-theme .popup-content button {
+      background: var(--apply-bg, linear-gradient(135deg,#00bfff,#0072ff));
+      color: var(--button-text, #fff);
+      box-shadow: 0 10px 28px rgba(0,110,200,0.28);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <h1>🌟 InternSarthi</h1>
+    </div>
+
+    <nav>
+      <button onclick="location.href='home_english.html'">హోమ్</button>
+      <button onclick="location.href='update_profile.html'">ప్రొఫైల్ నవీకరించు</button>
+      <button onclick="location.href='login_page.html'">సైన్ అవుట్</button>
+      <button onclick="location.href='about.html'">గురించి</button>
+    </nav>
+
+    <div id="controls">
+      <button id="theme-btn" onclick="toggleTheme()">🌓 థీమ్</button>
+
+      <div id="language-switcher">
+        <label for="language-select">భాష:</label>
+        <select id="language-select" onchange="handleLanguageChange()">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te" selected>తెలుగు (Telugu)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="profile-bar">
+      <div class="stat-box" onclick="openPopup('rating')">⭐ రేటింగ్: 4.8</div>
+      <div class="stat-box" onclick="openPopup('views')">👁️ వీక్షణలు: 1,245</div>
+      <div class="stat-box" onclick="openPopup('skills')">🧠 నైపుణ్యాలు: 12</div>
+      <div class="stat-box" onclick="openPopup('projects')">📁 ప్రాజెక్టులు: 5</div>
+      <div class="stat-box" onclick="openPopup('portfolio')">🔗 పోర్ట్‌ఫోలియో: లింక్ చేయబడింది</div>
+    </section>
+
+    <section class="tab-grid">
+      <a href="internships.html" class="tab-box">💼<span class="label">ఇంటర్న్‌షిప్‌లు</span></a>
+      <a href="notifications.html" class="tab-box">📚<span class="label">నోటిఫికేషన్లు</span></a>
+      <a href="recommendations.html" class="tab-box">🎯<span class="label">సిఫారసులు</span></a>
+      <a href="suggestions.html" class="tab-box">💡<span class="label">సూచనలు</span></a>
+      <a href="box5.html" class="tab-box">🧩<span class="label">బాక్స్ 5</span></a>
+      <a href="feedback.html" class="tab-box">🗂️<span class="label">అభిప్రాయం</span></a>
+    </section>
+
+    <section class="news-grid-section">
+      <h2>📰 పెద్ద వార్తలు & ప్రకటనలు</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <h3>🌐 బహుభాషా డాష్‌బోర్డ్ ప్రారంభం</h3>
+          <p>ఇంటర్న్‌సార్ధి ఇప్పుడు 6 భారతీయ భాషలను మద్దతు ఇస్తుంది, విద్యార్థులకు సులభంగా ఇంటర్న్‌షిప్‌లు అందిస్తుంది.</p>
+        </div>
+        <div class="news-card">
+          <h3>🎯 నైపుణ్యాల ఆధారిత సిఫారసులు</h3>
+          <p>మీ ప్రొఫైల్‌ను విశ్లేషించి మీ బలాలకు సరిపోలే ఇంటర్న్‌షిప్‌లను మా కొత్త ఇంజిన్ సూచిస్తుంది.</p>
+        </div>
+        <div class="news-card">
+          <h3>🌓 థీమ్ నిల్వ ఇప్పుడు అందుబాటులో ఉంది</h3>
+          <p>డార్క్ లేదా లైట్ — మీ థీమ్ ఎంపిక ఇప్పుడు సెషన్‌లలో కూడా ఉంటుంది.</p>
+        </div>
+        <div class="news-card">
+          <h3>💡 డెవలపర్ల కోసం భావోద్వేగ UI చిట్కాలు</h3>
+          <p>కొత్త బ్లాగ్ పోస్ట్: విద్యార్థుల నమ్మకాన్ని పెంపొందించడానికి భావోద్వేగ UI ఎలా సహాయపడుతుందో తెలుసుకోండి.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2 id="popup-title">పాప్‌అప్ శీర్షిక</h2>
+      <p id="popup-message">పాప్‌అప్ సందేశం ఇక్కడ చూపబడుతుంది...</p>
+      <button onclick="closePopup()">మూసివేయి</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function openPopup(type) {
+      const title = document.getElementById("popup-title");
+      const message = document.getElementById("popup-message");
+
+      switch(type) {
+        case "rating":
+          title.textContent = "⭐ మీ రేటింగ్";
+          message.textContent = "మీ ప్రొఫైల్ రేటింగ్ పూర్తయిన ఇంటర్న్‌షిప్‌లు, అభిప్రాయం, మరియు ప్రాజెక్టుల పనితీరుపై ఆధారపడి ఉంటుంది.";
+          break;
+        case "views":
+          title.textContent = "👁️ ప్రొఫైల్ వీక్షణలు";
+          message.textContent = "మీ ప్రొఫైల్‌ను 1,245 సార్లు రిక్రూటర్లు మరియు విద్యార్థులు వీక్షించారు.";
+          break;
+        case "skills":
+          title.textContent = "🧠 మీ నైపుణ్యాలు";
+          message.textContent = "మీరు వెబ్ డెవలప్‌మెంట్, పైథాన్, మరియు UI/UX డిజైన్ వంటి 12 ధృవీకరించబడిన నైపుణ్యాలను జోడించారు.";
+          break;
+        case "projects":
+          title.textContent = "📁 మీ ప్రాజెక్టులు";
+          message.textContent = "మీరు 5 ప్రాజెక్టులను అప్‌లోడ్ చేశారు, వాటిలో ఒకటి పోర్ట్‌ఫోలియో వెబ్‌సైట్ మరియు ఒక AI చాట్‌బాట్.";
+          break;
+        case "portfolio":
+          title.textContent = "🔗 పోర్ట్‌ఫోలియో లింక్ చేయబడింది";
+          message.textContent = "మీ పోర్ట్‌ఫోలియో లింక్ మీ ప్రొఫైల్‌కు కనెక్ట్ చేయబడింది. రిక్రూటర్లు ఎప్పుడైనా మీ పని పరిశీలించవచ్చు.";
+          break;
+      }
+
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>

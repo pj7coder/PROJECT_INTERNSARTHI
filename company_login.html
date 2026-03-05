@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Company Login - InternSarthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      max-width: 480px;
+      margin: 70px auto;
+      padding: 35px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    .form-container label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+      color: #444;
+    }
+    .form-container input,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #bbb;
+    }
+    .form-container button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+    .form-container .extra {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .form-container .extra a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .form-container .extra a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>🏢 Company Login</h2>
+    <form id="companyLoginForm">
+      <label>Company Name</label>
+      <input type="text" name="companyName">
+
+      <label>Company ID (Unique Identifier)</label>
+      <input type="text" name="companyId" placeholder="e.g., CMP12345">
+
+      <label>Email</label>
+      <input type="email" name="email">
+
+      <label>Password</label>
+      <input type="password" name="password">
+
+      <label>Contact Person Name</label>
+      <input type="text" name="contactName">
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" placeholder="+91 9876543210">
+
+      <label>Role in Company</label>
+      <select name="role">
+        <option value="">-- Select Role --</option>
+        <option value="HR">HR / Recruiter</option>
+        <option value="Manager">Hiring Manager</option>
+        <option value="Admin">Admin</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <button type="submit">Login</button>
+
+      <div class="extra">
+        <p>Don’t have an account? <a href="company_register.html">Register here</a></p>
+        <p><a href="#">Forgot Password?</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('companyLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent refresh
+
+      const formData = new FormData(this);
+      const companyData = {};
+
+      formData.forEach((value, key) => {
+        companyData[key] = value;
+      });
+
+      // Save to localStorage (simulate login session)
+      localStorage.setItem('companyLogin', JSON.stringify(companyData));
+
+      // Redirect to company_home.html
+      window.location = 'company_home.html';
+    });
+  </script>
+</body>
+</html>

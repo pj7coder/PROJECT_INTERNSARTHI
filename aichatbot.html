@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>InternSaarthi Chatbot</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-light: #f4f7fb;
+      --text-light: #1f2937;
+      --card-light: #ffffff;
+
+      --bg-dark: #0f1724;
+      --text-dark: #e6eef6;
+      --card-dark: #111827;
+
+      --accent: #2563eb; /* blue */
+      --accent-2: #10b981; /* green */
+
+      --bot-bubble-light: #eef2ff;
+      --bot-bubble-dark: #26324a;
+    }
+
+    html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;}
+    body.light{background:var(--bg-light);color:var(--text-light);}
+    body.dark{background:var(--bg-dark);color:var(--text-dark);}
+
+    .wrap{max-width:980px;margin:24px auto;padding:16px;}
+
+    .header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
+    .brand{display:flex;gap:12px;align-items:center;}
+    .brand h1{font-size:1.4rem;margin:0;}
+    .controls{display:flex;gap:8px;align-items:center;}
+
+    .btn {
+      border: none; padding:8px 12px;border-radius:8px;cursor:pointer;
+      font-weight:600;color:white;
+    }
+    .btn.theme{background:var(--accent);}
+    .btn.clear{background:#ef4444;}
+
+    .chat-card{
+      background:var(--card-light);
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(2,6,23,0.08);
+      overflow:hidden;
+      height:76vh;
+      display:flex;
+      flex-direction:column;
+      transition:background 0.25s;
+    }
+    body.dark .chat-card{background:var(--card-dark);box-shadow:0 10px 24px rgba(0,0,0,0.5);}
+
+    .chat-area{flex:1;padding:18px;overflow:auto;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;}
+    .msg{max-width:78%;padding:10px 14px;border-radius:12px;word-wrap:break-word;line-height:1.35;animation:fadeIn .18s;}
+    .user{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:4px;}
+    .bot{align-self:flex-start;background:var(--bot-bubble-light);color:var(--text-light);border-bottom-left-radius:4px;}
+    body.dark .bot{background:var(--bot-bubble-dark);color:var(--text-dark);}
+
+    .input-row{display:flex;border-top:1px solid rgba(0,0,0,0.06);}
+    body.dark .input-row{border-top:1px solid rgba(255,255,255,0.03);}
+    .input{
+      flex:1;padding:12px 14px;border:none;font-size:1rem;background:transparent;color:inherit;
+      outline:none;
+    }
+    .send-btn{background:var(--accent-2);color:white;padding:0 18px;border:none;cursor:pointer;font-weight:600;}
+    .send-btn:hover{filter:brightness(.95);}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    @media (max-width:600px){
+      .wrap{padding:8px}
+      .chat-card{height:78vh}
+    }
+
+    .meta { font-size:0.85rem; opacity:0.85; margin-top:4px; }
+    .link { color: inherit; text-decoration:underline; font-weight:600; }
+
+    /* Typing bubble styles */
+    .msg.bot.typing{font-style:italic;opacity:0.95;display:inline-flex;align-items:center;gap:10px;}
+    .typing .dots{display:inline-flex;gap:4px;align-items:center;}
+    .typing .dots span{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block;opacity:0.25;animation:typing 1s infinite;}
+    .typing .dots span:nth-child(2){animation-delay:0.12s}
+    .typing .dots span:nth-child(3){animation-delay:0.24s}
+    @keyframes typing{0%{opacity:0.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}100%{opacity:0.25;transform:translateY(0)}}
+  </style>
+</head>
+<body class="light">
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <div style="font-size:28px">🤖</div>
+        <h1>InternSaarthi Chatbot</h1>
+      </div>
+      <div class="controls">
+        <button class="btn theme" id="themeBtn">🌙 Dark</button>
+        <button class="btn clear" id="clearBtn">🧹 Clear Chat</button>
+      </div>
+    </div>
+
+    <div class="chat-card" role="region" aria-label="Chat interface">
+      <div class="chat-area" id="chatArea"></div>
+      <div class="input-row" id="inputRow">
+        <input id="userInput" class="input" placeholder="Type your message and press Enter..." autocomplete="off" />
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       KNOWLEDGE BASE
+       - Add or edit companies and skills below.
+       - Each company: name, link, type(optional), tags:[keywords...]
+       - Each skill: tag, name, link
+       ============================================================ */
+   let companies = [];
+
+// Load companies from JSON file
+fetch("companies_200.json")
+  .then(res => res.json())
+  .then(data => {
+    companies = data;
+    console.log("✅ Loaded", companies.length, "companies");
+  })
+  .catch(err => console.error("❌ Failed to load companies:", err));
+
+   let skills = [];
+
+// Load skills from JSON file
+fetch("skills_200.json")
+  .then(res => res.json())
+  .then(data => {
+    skills = data;
+    console.log("✅ Loaded", skills.length, "skills");
+  })
+  .catch(err => console.error("❌ Failed to load skills:", err));
+
+    let responses = [];
+
+// Load responses from JSON file
+fetch("chat_responses.json")
+  .then(res => res.json())
+  .then(data => {
+    responses = data;
+    console.log("✅ Loaded", responses.length, "responses");
+  })
+  .catch(err => console.error("❌ Failed to load responses:", err));
+
+
+    const tips = [
+      "Keep your LinkedIn profile updated and add projects.",
+      "Build 1–2 small projects and push them to GitHub.",
+      "Prepare a short 30–60s intro for interviews (elevator pitch).",
+      "Practice basic DS & Algo problems if you're applying for dev roles.",
+      "Keep your LinkedIn profile updated and add projects.",
+      "Build 1–2 small projects and push them to GitHub.",
+      "Prepare a short 30–60s intro for interviews (elevator pitch).",
+      "Practice basic DS & Algo problems if you're applying for dev roles.",
+      "Follow companies you’re interested in on LinkedIn.",
+      "Write a short summary about yourself on LinkedIn (clear & concise).",
+      "Learn basic SQL — it’s asked in many roles.",
+      "Brush up on OOPs concepts (common in interviews).",
+      "Start posting small learnings or project updates on LinkedIn.",
+      "Connect with alumni from your college who are in your field.",
+      "Have 1–2 internship-ready resumes (customized for roles).",
+      "Add your GitHub/portfolio link to your resume.",
+      "Join internship/job portals like Internshala, Wellfound, etc.",
+      "Revise basics of HTML, CSS, JavaScript (for web roles).",
+      "Learn how to explain projects in STAR format (Situation, Task, Action, Result).",
+      "Practice 1–2 behavioral interview questions daily.",
+      "Follow recruiters and apply directly from LinkedIn job posts.",
+      "Learn to write short, polite networking messages.",
+      "Take part in hackathons or coding challenges.",
+      "Read job descriptions carefully and match keywords in your resume.",
+      "Try LeetCode/Easy and Medium problems (not just Hard ones).",
+      "Keep a simple portfolio website with your projects.",
+      "Learn basic Git commands (clone, commit, push, pull).",
+      "Do mock interviews with a friend or on platforms like Pramp.",
+      "Keep track of all applications in a simple Excel/Notion sheet.",
+      "Learn one cloud platform basics (AWS/GCP/Azure free tier).",
+      "Revise CS fundamentals: OS, DBMS, Networking basics.",
+      "Build 1 project around APIs (shows practical skill).",
+      "Record yourself while practicing interviews to check confidence.",
+      "Read about company culture before interviews.",
+      "Apply early in the morning — better recruiter visibility.",
+      "Always send a short thank-you email/message after interviews.",
+      "Don’t wait for “perfect” — apply while learning.",
+      "Consistency beats cramming — spend 30–60 mins daily on prep.",
+
+      
+      
+      
+    ];
+
+    // synonyms map to improve matching (normalized keys -> canonical tags)
+    const synonyms = {
+      "machinelearning": ["ml"],
+      "machine": ["ml"],
+      "ml": ["ml"],
+      "javascript": ["frontend"],
+      "js": ["frontend"],
+      "react": ["frontend"],
+      "node": ["backend"],
+      "nodejs": ["backend"],
+      "aws": ["cloud"],
+      "gcp": ["cloud"],
+      "azure": ["cloud"],
+      "uiux": ["design"],
+      "ux": ["design"],
+      "ui": ["design"],
+      "datascience": ["data"],
+      "dataanalysis": ["data"],
+      "nlp": ["ml"],
+      "dl": ["ml"],
+      "dev": ["develop"],
+      "development": ["develop"],
+      "intern": ["internship"],
+      "internship": ["internship"]
+    };
+
+    /* ============================================================
+       END KNOWLEDGE BASE
+       ============================================================ */
+
+    // Profile structure (collected at start)
+    const profile = { name: "", qualification: "", percentage: "", interests: [], skills: [] };
+    let profileStage = 0;
+    const profileQuestions = [
+      { key: "name", q: "Hi! What's your name?" },
+      { key: "qualification", q: "What's your qualification? " },
+      { key: "percentage", q: "What's your percentage / CGPA? " },
+      { key: "interests", q: "List your interests (comma-separated)." },
+      { key: "skills", q: "List skills you already have (comma-separated)." }
+    ];
+
+    // DOM refs
+    const chatArea = document.getElementById("chatArea");
+    const input = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const themeBtn = document.getElementById("themeBtn");
+    const clearBtn = document.getElementById("clearBtn");
+
+    // Helpers
+    function escapeHtml(unsafe) {
+      return String(unsafe)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function pickRandom(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+    // safe word-boundary presence check
+    function containsAnyToken(text, list){
+      if(!text) return false;
+      for(const token of list){
+        const safe = token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const re = new RegExp("\\b" + safe + "\\b", "i");
+        if(re.test(text)) return true;
+      }
+      return false;
+    }
+
+    // Normalize token: lower, strip non-alphanum, basic stemming
+    function normalizeToken(w){
+      if(!w) return "";
+      let s = w.toLowerCase().replace(/[^a-z0-9]/g, "");
+      if(s.length > 4){
+        if(s.endsWith("ing")) s = s.slice(0, -3);
+        else if(s.endsWith("ied")) s = s.slice(0, -3) + "y";
+        else if(s.endsWith("ed")) s = s.slice(0, -2);
+        else if(s.endsWith("ies")) s = s.slice(0, -3) + "y";
+        else if(s.endsWith("s")) s = s.slice(0, -1);
+      }
+      return s;
+    }
+
+    // Tokenize + expand with synonyms
+    function tokenizeToSet(text){
+      if(!text) return new Set();
+      const words = text.split(/\s+/).map(t => normalizeToken(t)).filter(Boolean);
+      const s = new Set(words);
+      // expand using synonyms map
+      for(const w of Array.from(s)){
+        if(synonyms[w]){
+          for(const mapped of synonyms[w]){
+            s.add(mapped);
+          }
+        }
+      }
+      return s;
+    }
+
+    // Utility: append a message bubble (escapes user content)
+    function appendMessage(text, sender = "bot", extraHtml=false){
+      const el = document.createElement("div");
+      el.className = "msg " + (sender === "user" ? "user" : "bot");
+      if(extraHtml){
+        // internal HTML (from getRecommendations) is trusted (coming from code)
+        el.innerHTML = text;
+      } else {
+        el.innerHTML = escapeHtml(String(text)).replace(/\n/g,"<br>");
+      }
+      chatArea.appendChild(el);
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    // Typing indicator
+    function showTypingBubble(){
+      const el = document.createElement("div");
+      el.className = "msg bot typing";
+      el.innerHTML = `<span>typing</span> <span class="dots"><span></span><span></span><span></span></span>`;
+      chatArea.appendChild(el);
+      chatArea.scrollTop = chatArea.scrollHeight;
+      return el;
+    }
+
+    function showTypingThenRespond(userText){
+      const bubble = showTypingBubble();
+      // duration: depends on length, min 700ms, max 2200ms
+      const duration = Math.min(700 + Math.max(0, userText.length) * 12, 2200);
+      setTimeout(() => {
+        bubble.remove();
+        const responseHtml = getRecommendations(userText);
+        appendMessage(responseHtml, "bot", true);
+      }, duration);
+    }
+
+    // localStorage helpers - simple persistence for profile
+    const STORAGE_KEY = "internsaarthi_profile_v1";
+    function saveProfile(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(profile)); } catch(e){ /* ignore */ }
+    }
+    function loadProfile(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(!raw) return false;
+        const p = JSON.parse(raw);
+        if(p && typeof p === "object"){
+          Object.assign(profile, p);
+          profileStage = profileQuestions.length;
+          return true;
+        }
+      } catch(e){}
+      return false;
+    }
+    function clearSavedProfile(){
+      try{ localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    }
+
+    // Start conversation
+    function startConversation(){
+      profileStage = 0;
+      profile.name = profile.qualification = profile.percentage = "";
+      profile.interests = [];
+      profile.skills = [];
+      askProfileQuestion();
+    }
+
+    function askProfileQuestion(){
+      const pq = profileQuestions[profileStage];
+      appendMessage(pq.q, "bot");
+      input.focus();
+    }
+
+    // Recommendation engine (personalized & weighted)
+    function getRecommendations(inputText){
+      const combined = (inputText || "") + " " + (profile.interests || []).join(" ");
+      const tokenSet = tokenizeToSet(combined);
+
+      // qualification boost map (simple heuristics)
+      const qualBoostMap = {
+        "btech": ["develop","software","backend","frontend","ml","ai"],
+        "mca": ["develop","software","backend"],
+        "design": ["design","ui","ux","creative"],
+        "bba": ["product","marketing","business"]
+      };
+      let boosts = [];
+      const uQual = (profile.qualification || "").toLowerCase();
+      for(const key of Object.keys(qualBoostMap)){
+        if(uQual.includes(key)) { boosts = qualBoostMap[key]; break; }
+      }
+
+      const scored = companies.map(company => {
+        let score = 0;
+        const matchedTags = [];
+        for(const rawTag of company.tags || []){
+          const tag = normalizeToken(rawTag);
+          if(tokenSet.has(tag)){ score += 3; matchedTags.push(rawTag); } // direct match strong
+          if((profile.skills || []).map(s=>normalizeToken(s)).includes(tag)) score += 1.5;
+          if((profile.interests || []).map(i=>normalizeToken(i)).includes(tag)) score += 1;
+          if(boosts.includes(tag)) score += 0.8;
+        }
+        return { company, score, matchedTags };
+      });
+
+      const positiveMatches = scored.filter(s => s.score > 0).sort((a,b)=> b.score - a.score);
+
+      let html = "";
+      if(positiveMatches.length === 0){
+        html += `<strong>I couldn't find close matches based on your query.</strong><br>`;
+        html += `Try asking more specifically (e.g., "internships in AI", "frontend internships", or "internships at product companies").<br>`;
+        html += `<br><strong>General suggestions:</strong><ul>`;
+        companies.slice(0,4).forEach(c => {
+          html += `<li><a class="link" href="${c.link}" target="_blank">${c.name}</a> — ${c.type || ""}</li>`;
+        });
+        html += `</ul>`;
+        html += `<br><strong>Quick tips:</strong><ul>`;
+        tips.slice(0,3).forEach(t=> html += `<li>${t}</li>`);
+        html += `</ul>`;
+        return html;
+      }
+
+      html += `<strong>Top internship matches for you:</strong><br><ol>`;
+      positiveMatches.slice(0,6).forEach(m => {
+        html += `<li><a class="link" href="${m.company.link}" target="_blank">${m.company.name}</a> — ${m.company.type || ""}`;
+        if(m.matchedTags.length) html += `<div class="meta">Matched: ${m.matchedTags.join(", ")}</div>`;
+        html += `</li>`;
+      });
+      html += `</ol>`;
+
+      // Suggested skills
+      const matchedSkillSet = new Map();
+      for(const sk of skills){
+        const tag = normalizeToken(sk.tag || "");
+        if(tokenSet.has(tag) || (profile.interests||[]).map(i=>normalizeToken(i)).includes(tag)){
+          matchedSkillSet.set(tag, sk);
+        }
+      }
+      if(matchedSkillSet.size){
+        html += `<br><strong>Useful skill resources:</strong><ul>`;
+        for(const s of matchedSkillSet.values()){
+          html += `<li>${s.name} → <a class="link" href="${s.link}" target="_blank">watch</a></li>`;
+        }
+        html += `</ul>`;
+      } else {
+        // mention a few helpful tips if no skill matches
+        html += `<br><strong>Pro tip:</strong><ul>`;
+        html += `<li>${pickRandom(tips)}</li>`;
+        html += `</ul>`;
+      }
+
+      return html;
+    }
+
+    // handle user send & small-talk
+    function handleSend(){
+      const text = input.value.trim();
+      if(!text) return;
+      appendMessage(text, "user");
+      input.value = "";
+
+      // ----- Profile collection flow -----
+      if(profileStage < profileQuestions.length){
+        const key = profileQuestions[profileStage].key;
+        if(key === "interests" || key === "skills"){
+          const arr = text.split(",").map(s => s.trim()).filter(Boolean);
+          profile[key] = arr;
+        } else if(key === "percentage" && (text.toLowerCase() === "skip" || text.toLowerCase() === "na")){
+          profile[key] = "";
+        } else {
+          profile[key] = text;
+        }
+
+        profileStage++;
+        if(profileStage < profileQuestions.length){
+          askProfileQuestion();
+        } else {
+          appendMessage(`Thanks ${profile.name || ""}! I saved your profile. 🎉 You can now ask things like: "Find internships in AI" or "Suggest companies for design."`, "bot");
+          saveProfile();
+        }
+        return;
+      }
+
+      // ----- Small-talk & commands -----
+      const lower = text.toLowerCase();
+
+      // greetings
+      if(containsAnyToken(lower, ["hi","hello","hey","yo"])){
+        const reply = pickRandom(smallTalk.greetings).replace("{name}", profile.name || "");
+        appendMessage(reply, "bot");
+        return;
+      }
+      // how are you
+      if(containsAnyToken(lower, ["how are you","how r you","how are u","how's it going","how are things"])){
+        appendMessage(pickRandom(smallTalk.howareyou), "bot");
+        return;
+      }
+      // thanks
+      if(containsAnyToken(lower, ["thanks","thank you","thx","thanku"])){
+        appendMessage(pickRandom(smallTalk.thanks), "bot");
+        return;
+      }
+      // bye
+      if(containsAnyToken(lower, ["bye","goodbye","see ya","see you"])){
+        appendMessage(pickRandom(smallTalk.bye), "bot");
+        return;
+      }
+      // profile commands
+      if(containsAnyToken(lower, ["my profile","show profile","view profile"])){
+        const summary = `<strong>Your profile</strong><br>
+          Name: ${escapeHtml(profile.name || "—")}<br>
+          Qualification: ${escapeHtml(profile.qualification || "—")}<br>
+          Percentage: ${escapeHtml(profile.percentage || "—")}<br>
+          Interests: ${escapeHtml((profile.interests || []).join(", ") || "—")}<br>
+          Skills: ${escapeHtml((profile.skills || []).join(", ") || "—")}<br>
+          <div class="meta">Tip: say "clear profile" to reset.</div>`;
+        appendMessage(summary, "bot", true);
+        return;
+      }
+      if(containsAnyToken(lower, ["clear profile","reset profile","delete profile"])){
+        clearSavedProfile();
+        startConversation();
+        appendMessage("Profile cleared. Let's start again.", "bot");
+        return;
+      }
+      // help
+      if(containsAnyToken(lower, ["help","commands","what can you do"])){
+        const help = `<strong>Try these</strong><br>
+          - "Find internships in AI"<br>
+          - "Suggest companies for design"<br>
+          - "I know python and ml"<br>
+          - "My profile" (see saved profile)<br>
+          - "Clear profile" (reset stored profile)<br>
+          - "Tip" (quick career tip)`;
+        appendMessage(help, "bot", true);
+        return;
+      }
+      // tip
+      if(containsAnyToken(lower, ["tip","tips","advice"])){
+        appendMessage(`<strong>Tip:</strong> ${pickRandom(tips)}`, "bot");
+        return;
+      }
+
+      // otherwise: recommendations with typing animation
+      showTypingThenRespond(text);
+    }
+
+    // Attach events
+    sendBtn.addEventListener("click", handleSend);
+    input.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") { e.preventDefault(); handleSend(); }
+    });
+
+    themeBtn.addEventListener("click", () => {
+      const body = document.body;
+      if(body.classList.contains("dark")){
+        body.classList.replace("dark","light");
+        themeBtn.textContent = "🌙 Dark";
+      } else {
+        body.classList.replace("light","dark");
+        themeBtn.textContent = "☀️ Light";
+      }
+    });
+
+    clearBtn.addEventListener("click", () => {
+      chatArea.innerHTML = "";
+      startConversation();
+    });
+
+    // On load: try to load saved profile; if found, resume; otherwise start fresh
+    (function init(){
+      const loaded = loadProfile();
+      if(loaded){
+        appendMessage(`Welcome back ${profile.name || ""}! I remembered your profile. Ask me to find internships or say "help".`, "bot");
+      } else {
+        startConversation();
+      }
+    })();
+  </script>
+</body>
+</html>

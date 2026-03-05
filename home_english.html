@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>InternSarthi</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Popup base styles (theme-aware) */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2,6,23,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      position: relative; /* enable absolute close button */
+      background: var(--card, #fff);
+      color: var(--card-text, #222);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* top-right cross close button */
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: 0;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      color: var(--text);
+    }
+    .popup-close:focus { outline: 3px solid rgba(102,140,255,0.18); outline-offset: 2px; }
+
+    body.dark-theme .popup-close { color: var(--card-text, var(--dark-text)); background: transparent; }
+
+    .popup-content h2 {
+      margin-bottom: 10px;
+      color: var(--section-text, var(--text));
+    }
+
+    .popup-content p {
+      margin-bottom: 15px;
+      color: var(--section-muted, rgba(17,24,39,0.7));
+    }
+
+    .popup-content button {
+      padding: 10px 15px;
+      border: none;
+      background: var(--button-bg, linear-gradient(135deg,#007bff,#0056b3));
+      color: var(--button-text, #fff);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 120ms ease;
+    }
+
+    .popup-content button:hover {
+      transform: translateY(-2px);
+      background: var(--button-hover, #0056b3);
+    }
+
+    /* Focus accessibility */
+    .popup-content button:focus { outline: 3px solid rgba(102,140,255,0.18); outline-offset: 3px; }
+
+    /* Dark theme overrides */
+    body.dark-theme .popup {
+      /* slightly stronger dark overlay for dark pages */
+      background: rgba(2,6,23,0.75);
+    }
+    body.dark-theme .popup-content {
+      background: var(--card, linear-gradient(180deg,#16171a,#141418));
+      color: var(--card-text, var(--dark-text));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    body.dark-theme .popup-content p {
+      color: var(--section-muted, rgba(230,238,246,0.72));
+    }
+    body.dark-theme .popup-content button {
+      background: var(--apply-bg, linear-gradient(135deg,#00bfff,#0072ff));
+      color: var(--button-text, #fff);
+      box-shadow: 0 10px 28px rgba(0,110,200,0.28);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Chat-specific styling (theme aware) */
+    /* chat popup CSS removed (chat moved to aichatbot.html) */
+
+    /* Adjustments for smaller screens */
+    @media (max-width: 480px) {
+      .popup-content {
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      .popup-content h2 {
+        font-size: 1.25rem;
+      }
+
+      .popup-content p {
+        font-size: 0.9rem;
+      }
+
+      .popup-content button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <h1>🌟 InternSarthi</h1>
+    </div>
+
+    <nav>
+      <button onclick="location.href='home_english.html'">Home</button>
+      <button onclick="location.href='details.html'">Update Profile</button>
+      <button onclick="location.href='main_login.html'">Sign out</button>
+      <button onclick="location.href='about.html'">About</button>
+    </nav>
+
+    <div id="controls">
+      <button id="theme-btn" onclick="toggleTheme()">🌓 Theme</button>
+
+      <div id="language-switcher">
+        <label for="language-select">Language:</label>
+        <select id="language-select" onchange="handleLanguageChange()">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="profile-bar">
+      <div class="stat-box" onclick="openPopup('rating')">⭐ Rating: 4.8</div>
+      <div class="stat-box" onclick="openPopup('views')">👁️ Views: 1,245</div>
+      <div class="stat-box" onclick="openPopup('skills')">🧠 Skills: 12</div>
+      <div class="stat-box" onclick="openPopup('projects')">📁 Projects: 5</div>
+      <div class="stat-box" onclick="openPopup('portfolio')">🔗 Portfolio: Linked</div>
+    </section>
+
+    <section class="tab-grid">
+      <a href="internships.html" class="tab-box">💼<span class="label">Internships</span></a>
+      <a href="notifications.html" class="tab-box">📚<span class="label">Notifications</span></a>
+      <a href="recommendations.html" class="tab-box">🎯<span class="label">Recommendations</span></a>
+      <a href="suggestions.html" class="tab-box">💡<span class="label">Suggestions</span></a>
+      <!-- Open quiz as popup -->
+      <a href="#" class="tab-box" onclick="openQuizPopup(); return false;">📝<span class="label">Quiz</span></a>
+      <a href="feedback.html" class="tab-box">🗂️<span class="label">Feedback</span></a>
+    </section>
+
+    <section class="news-grid-section">
+      <h2>📰 News & Announcements</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <h3>🌐 Multilingual Dashboard Goes Live</h3>
+          <p>InternSarthi now supports 6 Indian languages, making internships accessible to students across Bharat.</p>
+        </div>
+        <div class="news-card">
+          <h3>🎯 Skill-Based Recommendations Launched</h3>
+          <p>Our new engine analyzes your profile and suggests internships that match your strengths.</p>
+        </div>
+        <div class="news-card">
+          <h3>🌓 Theme Persistence Now Enabled</h3>
+          <p>Dark or light—your theme choice now stays across sessions. InternSarthi remembers your preferences.</p>
+        </div>
+        <div class="news-card">
+          <h3>💡 Emotional Design Tips for Developers</h3>
+          <p>New blog post: Learn how emotionally intelligent UI can boost student confidence.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup (existing) -->
+  <div id="popup" class="popup" aria-hidden="true">
+    <div class="popup-content">
+      <button class="popup-close" aria-label="Close popup" onclick="closePopup()">✕</button>
+      <h2 id="popup-title">Popup Title</h2>
+      <p id="popup-message">Popup message goes here...</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <!-- Quiz Popup: 5-question quiz (hidden by default) -->
+  <div id="quiz-popup" class="popup" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="popup-content" style="max-width:640px;">
+      <div style="text-align:left;">
+        <h2 id="quiz-title">Quick Quiz</h2>
+        <div id="quiz-body" aria-live="polite">
+          <div id="quiz-qnum" style="font-weight:700;margin-bottom:8px;"></div>
+          <div id="quiz-question" style="font-size:1.05rem;margin-bottom:12px;"></div>
+          <div id="quiz-options" style="display:flex;flex-direction:column;gap:8px;"></div>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px;">
+          <button id="quiz-next" class="apply-btn">Next</button>
+          <button id="quiz-close" class="btn-ghost" style="background:transparent;border:1px solid rgba(0,0,0,0.06)">Close</button>
+        </div>
+        <div id="quiz-result" style="margin-top:14px;text-align:center;font-weight:800"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function openPopup(type) {
+      const title = document.getElementById("popup-title");
+      const message = document.getElementById("popup-message");
+
+      switch(type) {
+        case "rating":
+          title.textContent = "⭐ Your Rating";
+          message.textContent = "Your profile rating is based on completed internships, feedback, and project performance.";
+          break;
+        case "views":
+          title.textContent = "👁️ Profile Views";
+          message.textContent = "Your profile has been viewed 1,245 times by recruiters and students.";
+          break;
+        case "skills":
+          title.textContent = "🧠 Your Skills";
+          message.textContent = "You have added 12 verified skills including Web Development, Python, and UI/UX Design.";
+          break;
+        case "projects":
+          title.textContent = "📁 Your Projects";
+          message.textContent = "You have uploaded 5 projects showcasing your abilities, including a portfolio website and an AI chatbot.";
+          break;
+        case "portfolio":
+          title.textContent = "🔗 Portfolio Linked";
+          message.textContent = "Your portfolio link is connected to your profile. Recruiters can explore your work anytime.";
+          break;
+      }
+
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    /* Quiz popup logic */
+    (function(){
+      const quizPopup = document.getElementById('quiz-popup');
+      const qnumEl = document.getElementById('quiz-qnum');
+      const qEl = document.getElementById('quiz-question');
+      const optsEl = document.getElementById('quiz-options');
+      const nextBtn = document.getElementById('quiz-next');
+      const closeBtn = document.getElementById('quiz-close');
+      const resultEl = document.getElementById('quiz-result');
+
+      const questions = [
+        { q: "What is the full form of HTML?", a: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"],c:1 },
+        { q: "Which CSS property changes text color?", a: ["font-color","text-color","color","fg-color"], c: 1 },
+        { q: "Which language is primarily used for web page behavior?", a: ["Python","JavaScript","C++","Ruby"], c: 1 },
+        { q: "Which CSS property is used to change the text color?", a: ["font-color", "color", "text-style", "background-color"], c: 1 },
+        { q: "Which CSS unit is relative to the root font-size?", a: ["px","em","rem","pt"], c: 1 }
+      ];
+
+      let idx = 0, score = 0, selected = null;
+
+      function renderQuestion() {
+        resultEl.textContent = '';
+        selected = null;
+        const item = questions[idx];
+        qnumEl.textContent = `Question ${idx+1} / ${questions.length}`;
+        qEl.textContent = item.q;
+        optsEl.innerHTML = '';
+
+        // shuffle option indices so choices appear in random order each time
+        function shuffle(arr) {
+          for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+          }
+          return arr;
+        }
+        const order = shuffle([0,1,2,3]);
+
+        order.forEach((origIndex,i)=>{
+          const label = document.createElement('label');
+          label.className = 'option';
+          label.style.cursor = 'pointer';
+          label.tabIndex = 0;
+          // store original option index in value so correctness check compares to item.c
+          label.innerHTML = `<input type="radio" name="quizopt" value="${origIndex}" style="margin-right:8px"> ${item.a[origIndex]}`;
+          label.addEventListener('click', ()=>{
+            // value is original index
+            select(parseInt(origIndex,10));
+            label.querySelector('input').checked = true;
+          });
+          label.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); label.click(); }});
+          optsEl.appendChild(label);
+        });
+        nextBtn.textContent = idx === questions.length -1 ? 'Submit' : 'Next';
+      }
+
+      function select(i){
+        selected = i; // i is original option index (0..3)
+        Array.from(optsEl.children).forEach((el)=>{
+          const input = el.querySelector('input');
+          const val = parseInt(input.value,10);
+          el.style.background = val === i ? 'rgba(0,120,215,0.08)' : 'transparent';
+        });
+      }
+
+      nextBtn.addEventListener('click', ()=>{
+        if (selected === null) { alert('Please select an option'); return; }
+        if (selected === questions[idx].c) score++;
+        idx++;
+        if (idx < questions.length) renderQuestion();
+        else showResult();
+      });
+
+      closeBtn.addEventListener('click', ()=> closeQuiz());
+
+      function showResult(){
+        optsEl.innerHTML = '';
+        qnumEl.textContent = '';
+        qEl.textContent = 'Quiz complete';
+        nextBtn.style.display = 'none';
+        resultEl.innerHTML = `Score: ${score} / ${questions.length} <br> <small>${Math.round((score/questions.length)*100)}%</small>`;
+        closeBtn.textContent = 'Close';
+        // show restart option
+        const restart = document.createElement('button');
+        restart.className = 'apply-btn';
+        restart.textContent = 'Restart';
+        restart.style.marginLeft = '8px';
+        restart.addEventListener('click', ()=>{
+          idx = 0; score = 0; selected = null; nextBtn.style.display=''; renderQuestion(); resultEl.textContent=''; restart.remove();
+        });
+        closeBtn.parentNode.appendChild(restart);
+      }
+
+      function openQuizPopup(){
+        idx = 0; score = 0; selected = null; nextBtn.style.display=''; resultEl.textContent=''; renderQuestion();
+        quizPopup.style.display = 'flex';
+        quizPopup.setAttribute('aria-hidden','false');
+      }
+      function closeQuiz(){
+        quizPopup.style.display = 'none';
+        quizPopup.setAttribute('aria-hidden','true');
+      }
+
+      // expose for inline handler
+      window.openQuizPopup = openQuizPopup;
+      window.closeQuiz = closeQuiz;
+    })();
+
+    /* Chat popup handlers & simple bot (integrated popup) */
+    (function(){
+      const chatPopup = document.getElementById('chat-popup');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatForm = document.getElementById('chat-popup-form');
+      const chatInput = document.getElementById('chat-popup-input');
+
+      function openChatPopup(){
+        chatPopup.style.display = 'flex';
+        chatPopup.setAttribute('aria-hidden','false');
+        // focus input after open
+        setTimeout(()=> chatInput.focus(), 120);
+      }
+      function closeChatPopup(){
+        chatPopup.style.display = 'none';
+        chatPopup.setAttribute('aria-hidden','true');
+      }
+
+      function appendMessage(who, html, cls){
+        const d = document.createElement('div');
+        d.className = 'message ' + (cls||who);
+        d.style.maxWidth = '80%';
+        if(who === 'user') { d.style.alignSelf = 'flex-end'; d.style.background = 'linear-gradient(135deg,var(--primary-500,#0078d7),var(--primary-700,#0056b3))'; d.style.color = '#fff'; }
+        d.style.padding = '10px 12px'; d.style.borderRadius = '12px';
+        d.innerHTML = `<strong>${who === 'bot' ? 'Bot' : 'You'}:</strong> ${html}`;
+        chatMessages.appendChild(d);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function botReply(text){
+        const t = (text||'').toLowerCase();
+        if(t.includes('hello')||t.includes('hi')) return 'Hi there! 👋';
+        if(t.includes('how are you')) return "I'm fine — ready to help you find internships.";
+        if(t.includes('time')) return 'Current time: ' + new Date().toLocaleTimeString();
+        if(t.includes('date')) return "Today's date: " + new Date().toLocaleDateString();
+        if(t.includes('quiz')) return 'Use the Quiz button on the page to take a quick 5-question test.';
+        if(t.includes('bye')) return 'Goodbye! 👋';
+        return "Sorry, I don't understand that yet. Try asking about vacancies, skills or the quiz.";
+      }
+
+      window.openChatPopup = openChatPopup;
+      window.closeChatPopup = closeChatPopup;
+
+      window.sendChatFromPopup = function(e){
+        e.preventDefault();
+        const v = chatInput.value.trim();
+        if(!v) return false;
+        appendMessage('user', escapeHTML(v), 'user');
+        chatInput.value = '';
+        // simulate bot thinking
+        setTimeout(()=> {
+          appendMessage('bot', escapeHTML(botReply(v)), 'bot');
+        }, 400);
+        return false;
+      };
+
+      function escapeHTML(str){ return str.replace(/[&<>"']/g, function(m){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); }); }
+    })();
+  </script>
+
+  <!-- Chat launcher (lower-right) - opens popup -->
+  <a id="chat-launcher" href="aichatbot.html" aria-label="Open chatbot" style="position:fixed;right:18px;bottom:18px;z-index:9999;text-decoration:none;">
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" style="border-radius:999px;display:block;box-shadow:0 12px 30px rgba(2,6,23,0.18);">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#4facfe"/><stop offset="1" stop-color="#00f2fe"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="24" height="24" rx="12" fill="url(#g1)"></rect>
+      <path d="M7 9.5h10v1.5H7zM7 12.5h7v1.5H7z" fill="#fff" opacity="0.95"></path>
+    </svg>
+  </a>
+ 
+ </body>
+ </html>

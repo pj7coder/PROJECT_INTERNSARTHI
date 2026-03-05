@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Opportunities</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Internship Opportunities</h1>
+
+    <div class="tabs">
+      <button class="tab active" onclick="openTab(event, 'google')">Google</button>
+      <button class="tab" onclick="openTab(event, 'microsoft')">Microsoft</button>
+      <button class="tab" onclick="openTab(event, 'tesla')">Tesla</button>
+      <button class="tab" onclick="openTab(event, 'byjus')">BYJU'S</button>
+      <button class="tab" onclick="openTab(event, 'zoho')">Zoho</button>
+    </div>
+
+    <div class="tab-content active" id="google">
+      <h2>Google</h2>
+      <p><strong>Location:</strong> Mountain View, CA, USA</p>
+      <p><strong>Role:</strong> Software Engineering Intern</p>
+      <p><strong>Required Skills:</strong> Python, Java, Data Structures, Problem Solving</p>
+    </div>
+
+    <div class="tab-content" id="microsoft">
+      <h2>Microsoft</h2>
+      <p><strong>Location:</strong> Redmond, WA, USA</p>
+      <p><strong>Role:</strong> Cloud Solutions Intern</p>
+      <p><strong>Required Skills:</strong> Azure, C#, Networking Basics, Communication</p>
+    </div>
+
+    <div class="tab-content" id="tesla">
+      <h2>Tesla</h2>
+      <p><strong>Location:</strong> Austin, TX, USA</p>
+      <p><strong>Role:</strong> Embedded Systems Intern</p>
+      <p><strong>Required Skills:</strong> C++, IoT, Electronics, MATLAB</p>
+    </div>
+
+    <div class="tab-content" id="byjus">
+      <h2>BYJU'S</h2>
+      <p><strong>Location:</strong> Bengaluru, India</p>
+      <p><strong>Role:</strong> Business Development Intern</p>
+      <p><strong>Required Skills:</strong> Sales, Communication, Negotiation, CRM Tools</p>
+    </div>
+
+    <div class="tab-content" id="zoho">
+      <h2>Zoho</h2>
+      <p><strong>Location:</strong> Chennai, India</p>
+      <p><strong>Role:</strong> Web Development Intern</p>
+      <p><strong>Required Skills:</strong> HTML, CSS, JavaScript, React</p>
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, tabId) {
+      let tabs = document.getElementsByClassName("tab-content");
+      let buttons = document.getElementsByClassName("tab");
+
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+        buttons[i].classList.remove("active");
+      }
+
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+  
+  <script src="script.js"></script>
+</body>
+</html>

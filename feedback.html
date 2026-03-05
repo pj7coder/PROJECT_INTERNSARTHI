@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Feedback</title>
+
+  <style>
+    /* ===== Theme variables (light defaults) ===== */
+    :root{
+      --bg: #f4f6fb;
+      --text: #111827;
+      --container-bg: #ffffff;
+      --input-bg: #ffffff;
+      --input-border: #d1d5db;
+      --button-bg: #0078d7;
+      --button-text: #ffffff;
+      --button-hover: #0056b3;
+      --shadow: 0 6px 20px rgba(2,6,23,0.08);
+      --radius: 12px;
+    }
+
+    /* Dark theme — toggled by adding class "dark-theme" to body (matches script.js) */
+    body.dark-theme {
+      --bg: #0b0f13;
+      --text: #e6eef6;
+      --container-bg: #111315;
+      --input-bg: #16171a;
+      --input-border: #2a2a2e;
+      --button-bg: linear-gradient(135deg,#00bfff,#0072ff);
+      --button-text: #ffffff;
+      --button-hover: #0b5ed7;
+      --shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Reset + base */
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif}
+
+    html, body{
+      height: auto;       /* fix scrolling bug */
+      min-height: 100%;
+    }
+
+    body{
+      background: var(--bg);
+      color: var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction: column; /* allow stacking + scroll */
+      min-height:100vh;
+      padding:20px;
+      transition:background 220ms ease,color 220ms ease;
+    }
+
+    /* Container */
+    .feedback-container{
+      background: var(--container-bg);
+      padding: 28px;
+      border-radius: var(--radius);
+      max-width:560px;
+      width:100%;
+      box-shadow: var(--shadow);
+      transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .feedback-container h1{
+      font-size:1.6rem;
+      margin-bottom:8px;
+      color:var(--text);
+      text-align:center;
+    }
+    .feedback-container p{ margin-bottom:18px; color:var(--text); opacity:0.88; text-align:center }
+
+    /* Form */
+    .feedback-form{ display:flex; flex-direction:column; gap:12px; }
+    .feedback-form label{ font-weight:600; margin-bottom:4px; color:var(--text) }
+
+    .feedback-form input,
+    .feedback-form select,
+    .feedback-form textarea{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text);
+      font-size:1rem;
+      transition: box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+    .feedback-form textarea{ min-height:120px; resize:vertical; }
+    .feedback-form input:focus,
+    .feedback-form select:focus,
+    .feedback-form textarea:focus{
+      outline:none;
+      box-shadow: 0 6px 20px rgba(0,120,215,0.12);
+      border-color: rgba(0,120,215,0.5);
+    }
+
+    ::placeholder{ color: rgba(17,24,39,0.35) }
+    body.dark-theme ::placeholder{ color: rgba(230,238,246,0.42) }
+
+    /* Button */
+    .feedback-form button{
+      padding:12px;
+      border-radius:10px;
+      border:0;
+      background: var(--button-bg);
+      color: var(--button-text);
+      font-weight:700;
+      cursor:pointer;
+      transition: transform 140ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+    .feedback-form button:hover{ transform: translateY(-2px); background: var(--button-hover) }
+
+    /* Responsive */
+    @media (max-width:520px){
+      .feedback-container{ padding:18px }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="feedback-container">
+    <h1>💬 We value your feedback</h1>
+    <p>Please share your thoughts to help us improve.</p>
+
+    <form class="feedback-form" onsubmit="event.preventDefault(); alert('Thanks for your feedback!');">
+      <!-- Name -->
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <!-- Email -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <!-- Rating -->
+      <label for="rating">Rate your experience</label>
+      <select id="rating" name="rating" required>
+        <option value="">Select...</option>
+        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+        <option value="4">⭐⭐⭐⭐ Good</option>
+        <option value="3">⭐⭐⭐ Average</option>
+        <option value="2">⭐⭐ Poor</option>
+        <option value="1">⭐ Very Bad</option>
+      </select>
+
+      <!-- Feedback -->
+      <label for="message">Your Feedback</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your feedback here..." required></textarea>
+
+      <!-- Submit -->
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+
+  <!-- theme logic uses script.js which toggles body.dark-theme and persists in localStorage -->
+  <script src="script.js"></script>
+</body>
+</html>
